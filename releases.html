@@ -6,13 +6,14 @@
 <title>LumaTech | Releases</title>
 
 <style>
+/* ===== בסיס ===== */
 html, body{
   margin:0;
   height:100%;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* SAME BACKGROUND */
+/* ===== רקע (זהה ל־home) ===== */
 body{
   background:
     linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7)),
@@ -27,19 +28,20 @@ body{
   text-align:center;
 }
 
-/* CONTAINER */
+/* ===== קונטיינר ===== */
 .container{
   padding:40px 20px;
+  width:100%;
+  max-width:1100px;
 }
 
-/* TITLE */
+/* ===== כותרות ===== */
 h1{
   margin:0;
-  font-size:40px;
-  letter-spacing:6px;
+  font-size:42px;
+  letter-spacing:8px;
 }
 
-/* SUBTITLE */
 .tag{
   margin-top:12px;
   font-size:12px;
@@ -47,29 +49,84 @@ h1{
   opacity:.75;
 }
 
-/* DIVIDER */
+/* ===== Divider ===== */
 .divider{
-  width:60px;
+  width:70px;
   height:1px;
   background:rgba(255,255,255,.6);
-  margin:30px auto;
+  margin:30px auto 40px;
 }
 
-/* RELEASE LIST (PLACEHOLDER) */
-.release{
-  margin-bottom:18px;
+/* ===== Grid ===== */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap:26px;
+}
+
+/* ===== Card ===== */
+.card{
+  background:rgba(0,0,0,.25);
+  padding:16px;
+  border-radius:16px;
+  text-align:left;
+}
+
+/* ===== Cover ===== */
+.cover{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:14px;
+  margin-bottom:14px;
+}
+
+/* ===== Meta ===== */
+.meta{
+  font-size:11px;
   letter-spacing:3px;
-  font-size:13px;
-  opacity:.9;
+  opacity:.75;
 }
 
-/* BUTTONS */
-.buttons{
+/* ===== Title ===== */
+.title{
+  margin:6px 0 10px;
+  font-size:14px;
+  letter-spacing:3px;
+  font-weight:700;
+  text-transform:uppercase;
+}
+
+/* ===== Links ===== */
+.links{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.links a{
+  padding:10px 14px;
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  text-decoration:none;
+  letter-spacing:3px;
+  font-size:11px;
+  transition:.25s;
+}
+
+.links a:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* ===== Back Button ===== */
+.back{
   margin-top:40px;
 }
 
-a{
-  padding:12px 26px;
+.back a{
+  padding:12px 28px;
   background:rgba(255,255,255,.12);
   color:#fff;
   text-decoration:none;
@@ -79,15 +136,15 @@ a{
   transition:.25s;
 }
 
-a:hover{
+.back a:hover{
   background:#fff;
   color:#000;
 }
 
-/* FADE IN */
+/* ===== Fade In ===== */
 .fade{
   opacity:0;
-  transform: translateY(12px);
+  transform: translateY(14px);
   animation: fadeIn 1.4s ease-out forwards;
 }
 
@@ -97,25 +154,46 @@ a:hover{
     transform: translateY(0);
   }
 }
+
+/* ===== Mobile ===== */
+@media (max-width:480px){
+  h1{font-size:34px;letter-spacing:6px}
+}
 </style>
 </head>
 
 <body>
 
 <div class="container fade">
+
   <h1>RELEASES</h1>
   <div class="tag">LUMATECH DISCOGRAPHY</div>
 
   <div class="divider"></div>
 
-  <!-- PLACEHOLDER RELEASES -->
-  <div class="release">LMT001 – Artist Name – Track Title</div>
-  <div class="release">LMT002 – Artist Name – Track Title</div>
-  <div class="release">LMT003 – Artist Name – Track Title</div>
+  <div class="grid">
 
-  <div class="buttons">
+    <!-- RELEASE CARD -->
+    <div class="card">
+      <img src="cover-lmt001.jpg" class="cover" alt="LMT001 Cover">
+
+      <div class="meta">CATALOG: LMT001</div>
+      <div class="title">Artist Name – Track Title</div>
+      <div class="meta">Release Date: Coming Soon</div>
+
+      <div class="links">
+        <a href="#" target="_blank">Spotify</a>
+        <a href="#" target="_blank">Beatport</a>
+        <a href="#" target="_blank">SoundCloud</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="back">
     <a href="home.html">BACK</a>
   </div>
+
 </div>
 
 </body>
