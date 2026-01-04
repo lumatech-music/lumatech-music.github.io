@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LumaTech | Melodic Techno Label</title>
+  <style>
+    :root{
+      --bg:#050505;
+      --fg:#ffffff;
+      --muted:rgba(255,255,255,.70);
+      --soft:rgba(255,255,255,.12);
+      --line:rgba(255,255,255,.85);
+    }
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font-family:Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:70px 18px}
+    .card{
+      width:min(980px, 100%);
+      border:1px solid var(--soft);
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0));
+      box-shadow:0 18px 60px rgba(0,0,0,.55);
+      overflow:hidden;
+    }
+    .top{
+      display:flex;
+      gap:28px;
+      align-items:center;
+      padding:34px 26px 22px;
+      border-bottom:1px solid var(--soft);
+    }
+    .logo{
+      width:160px;
+      max-width:36vw;
+      height:auto;
+      filter: drop-shadow(0 10px 25px rgba(0,0,0,.55));
+    }
+    .brand h1{
+      margin:0;
+      letter-spacing:6px;
+      font-size:40px;
+    }
+    .brand .tag{
+      margin-top:10px;
+      color:var(--muted);
+      letter-spacing:3px;
+      font-size:12px;
+      text-transform:uppercase;
+    }
+    .content{
+      padding:26px 26px 34px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:26px;
+    }
+    @media (max-width: 820px){
+      .top{flex-direction:column;text-align:center}
+      .content{grid-template-columns:1fr}
+      .brand h1{font-size:34px}
+    }
+    .about{
+      border:1px solid var(--soft);
+      border-radius:14px;
+      padding:18px 18px 16px;
+      background:rgba(0,0,0,.25);
+    }
+    .about h2{
+      margin:0 0 10px 0;
+      font-size:14px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+    }
+    .about p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.8;
+      font-size:15px;
+    }
+
+    .panel{
+      border:1px solid var(--soft);
+      border-radius:14px;
+      padding:18px;
+      background:rgba(0,0,0,.25);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .panel h2{
+      margin:0;
+      font-size:14px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+    }
+    .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 18px;
+      border:1px solid var(--line);
+      background:transparent;
+      color:var(--fg);
+      letter-spacing:3px;
+      font-weight:700;
+      font-size:12px;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
+    .btn:hover{background:#fff;color:#000;transform:translateY(-1px)}
+    .tri{
+      width:0;height:0;
+      border-left:6px solid transparent;
+      border-right:6px solid transparent;
+      border-bottom:10px solid currentColor;
+      transform: translateY(-1px);
+      opacity:.95;
+    }
+    .mini{
+      margin-top:2px;
+      color:rgba(255,255,255,.55);
+      font-size:11px;
+      letter-spacing:2px;
+      line-height:1.6;
+    }
+    .foot{
+      padding:18px 26px;
+      border-top:1px solid var(--soft);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      color:rgba(255,255,255,.45);
+      letter-spacing:2px;
+      font-size:11px;
+      text-transform:uppercase;
+    }
+    .pill{
+      border:1px solid var(--soft);
+      border-radius:999px;
+      padding:8px 12px;
+      background:rgba(0,0,0,.25);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+
+      <div class="top">
+        <!-- Put your logo file in the repo root as logo.png -->
+        <img class="logo" src="logo.png" alt="LumaTech Logo" />
+
+        <div class="brand">
+          <h1>LUMATECH</h1>
+          <div class="tag">Melodic Techno • Underground • Futuristic</div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="about">
+          <h2>About</h2>
+          <p>
+            LumaTech is an independent melodic techno label focused on deep atmospheres,
+            hypnotic rhythms and forward-thinking sound design.
+            <br><br>
+            We release music built for the dancefloor — tension, emotion and movement.
+          </p>
+        </div>
+
+        <div class="panel">
+          <h2>Listen</h2>
+          <div class="btns">
+            <a class="btn" href="#" target="_blank" rel="noopener">
+              <span class="tri" aria-hidden="true"></span> Spotify
+            </a>
+            <a class="btn" href="#" target="_blank" rel="noopener">
+              <span class="tri" aria-hidden="true"></span> Beatport
+            </a>
+            <a class="btn" href="#" target="_blank" rel="noopener">
+              <span class="tri" aria-hidden="true"></span> SoundCloud
+            </a>
+          </div>
+
+          <div class="mini">
+            Replace the links with your real pages.
+          </div>
+
+          <h2 style="margin-top:14px">Demos</h2>
+          <div class="mini">
+            Send private links + short bio to:<br>
+            <strong style="color:#fff;letter-spacing:2px">demos@lumatechmusic.com</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="foot">
+        <div class="pill">© LUMATECH</div>
+        <div class="pill">MELODIC TECHNO</div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
