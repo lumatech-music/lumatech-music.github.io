@@ -4,58 +4,98 @@
   <meta charset="UTF-8">
   <title>LumaTech Music | Melodic Techno Label</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
+    /* ====== GLOBAL ====== */
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #050505;
       color: #ffffff;
       text-align: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: #040404;
     }
+
+    /* ====== MOTION BACKGROUND ====== */
+    .bg-motion {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.06), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.04), transparent 45%),
+        linear-gradient(180deg, #030303 0%, #0b0b0b 50%, #030303 100%);
+      animation: bgDrift 40s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgDrift {
+      0%   { transform: scale(1) translateY(0); }
+      100% { transform: scale(1.08) translateY(-30px); }
+    }
+
+    /* ====== CONTENT ====== */
     .container {
       max-width: 900px;
       margin: auto;
-      padding: 90px 20px;
+      padding: 130px 20px 110px;
     }
+
+    /* ====== LOGO MOTION ====== */
     .logo {
-      max-width: 260px;
-      margin-bottom: 50px;
+      max-width: 380px;
+      width: 90%;
+      margin-bottom: 70px;
+      animation: logoFloat 8s ease-in-out infinite;
+      filter: drop-shadow(0 0 25px rgba(255,255,255,0.15));
     }
+
+    @keyframes logoFloat {
+      0%   { transform: scale(1) translateY(0); }
+      50%  { transform: scale(1.03) translateY(-6px); }
+      100% { transform: scale(1) translateY(0); }
+    }
+
     h1 {
-      font-size: 44px;
-      letter-spacing: 4px;
-      margin-bottom: 20px;
+      font-size: 46px;
+      letter-spacing: 5px;
+      margin-bottom: 22px;
     }
+
     .divider {
-      width: 60px;
+      width: 70px;
       height: 1px;
       background: #ffffff;
-      margin: 35px auto;
-      opacity: 0.6;
+      margin: 40px auto;
+      opacity: 0.45;
     }
+
     p {
       font-size: 18px;
       color: #cfcfcf;
-      line-height: 1.8;
-      max-width: 600px;
-      margin: 0 auto 40px;
+      line-height: 1.9;
+      max-width: 620px;
+      margin: 0 auto 55px;
     }
+
     .links a {
       display: inline-block;
-      margin: 10px;
-      padding: 14px 32px;
-      border: 1px solid #ffffff;
+      margin: 12px;
+      padding: 14px 36px;
+      border: 1px solid rgba(255,255,255,0.75);
       color: #ffffff;
       text-decoration: none;
       letter-spacing: 1px;
       transition: all 0.3s ease;
     }
+
     .links a:hover {
       background: #ffffff;
       color: #000000;
     }
+
     footer {
-      margin-top: 70px;
+      margin-top: 100px;
       font-size: 13px;
       color: #777;
       letter-spacing: 1px;
@@ -63,6 +103,9 @@
   </style>
 </head>
 <body>
+
+  <!-- MOTION BACKGROUND -->
+  <div class="bg-motion"></div>
 
   <div class="container">
     <img src="logo.png" alt="LumaTech Music Logo" class="logo">
@@ -73,8 +116,7 @@
 
     <p>
       Independent melodic techno label<br>
-      focused on futuristic soundscapes,
-      hypnotic rhythms and emotional depth.
+      exploring light, tension and futuristic sound design.
     </p>
 
     <div class="links">
