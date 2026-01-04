@@ -9,31 +9,29 @@
     :root{
       --fg:#ffffff;
       --muted:rgba(255,255,255,.75);
-      --btn-bg:rgba(255,255,255,.10);
-      --btn-bg-hover:rgba(255,255,255,.95);
-      --shadow: rgba(0,0,0,.55);
+      --btn-bg:rgba(255,255,255,.12);
+      --btn-hover:#ffffff;
     }
 
     html,body{
       height:100%;
       margin:0;
       font-family:Arial,Helvetica,sans-serif;
+    }
+
+    /* BACKGROUND */
+    body{
+      background:
+        linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.75)),
+        url("background.png");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      overflow:hidden;
       color:var(--fg);
     }
 
-    /* BACKGROUND IMAGE (your uploaded background.png) */
-    body{
-      background:
-        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.85)),
-        url("background.png");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      overflow:hidden;
-    }
-
-    /* CENTER CONTAINER */
+    /* CENTER */
     .wrap{
       height:100%;
       display:flex;
@@ -44,88 +42,82 @@
     }
 
     .card{
-      width:min(980px, 100%);
-      padding:38px 26px 34px;
-      border-radius:18px;
-      background:rgba(0,0,0,.25);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      box-shadow: 0 18px 60px var(--shadow);
+      padding:40px 28px 34px;
     }
 
+    /* LOGO – BLENDS INTO BACKGROUND */
     .logo{
-      max-width:200px;
+      max-width:320px;
+      width:80%;
       height:auto;
-      margin-bottom:24px;
-      filter: drop-shadow(0 14px 28px rgba(0,0,0,.6));
+      margin-bottom:28px;
+
+      /* THIS IS THE MAGIC */
+      mix-blend-mode: screen;
+      filter:
+        drop-shadow(0 0 30px rgba(255,255,255,.45))
+        drop-shadow(0 0 80px rgba(255,255,255,.25));
     }
 
     h1{
       margin:0;
-      font-size:46px;
+      font-size:42px;
       letter-spacing:8px;
     }
 
     .tag{
-      margin-top:12px;
-      color:var(--muted);
-      letter-spacing:4px;
+      margin-top:14px;
       font-size:12px;
+      letter-spacing:4px;
+      color:var(--muted);
       text-transform:uppercase;
     }
 
     .divider{
-      width:72px;
+      width:70px;
       height:1px;
-      background:rgba(255,255,255,.75);
-      margin:34px auto 30px;
-      opacity:.7;
+      background:rgba(255,255,255,.7);
+      margin:36px auto 30px;
     }
 
-    /* BUTTONS (NO LINES) */
+    /* BUTTONS – CLEAN, NO LINES */
     .nav{
       display:flex;
-      flex-wrap:wrap;
       gap:14px;
+      flex-wrap:wrap;
       justify-content:center;
-      margin-top:6px;
     }
 
     .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:14px 24px;
-      border:none;                 /* ✅ no lines */
+      padding:14px 26px;
+      border:none;
       background:var(--btn-bg);
-      color:var(--fg);
-      text-decoration:none;
+      color:#fff;
       letter-spacing:4px;
-      font-weight:700;
       font-size:12px;
+      font-weight:700;
       text-transform:uppercase;
       cursor:pointer;
-      transition: transform .25s ease, background .25s ease, color .25s ease;
+      transition:.25s ease;
+      text-decoration:none;
     }
 
     .btn:hover{
-      background:var(--btn-bg-hover);
+      background:var(--btn-hover);
       color:#000;
-      transform: translateY(-1px);
+      transform:translateY(-1px);
     }
 
     .foot{
-      margin-top:28px;
-      color:rgba(255,255,255,.45);
-      letter-spacing:3px;
+      margin-top:26px;
       font-size:11px;
-      text-transform:uppercase;
+      letter-spacing:3px;
+      color:rgba(255,255,255,.45);
     }
 
     @media (max-width:480px){
-      h1{font-size:38px;letter-spacing:6px}
-      .logo{max-width:160px}
-      .card{padding:32px 18px 28px}
+      h1{font-size:34px;letter-spacing:6px}
+      .logo{max-width:260px}
     }
   </style>
 </head>
@@ -133,8 +125,9 @@
 <body>
   <div class="wrap">
     <div class="card">
-      <!-- If you don't want logo, delete this line -->
-      <img class="logo" src="logo.png" alt="LumaTech Logo">
+
+      <!-- LOGO WITH GLOW -->
+      <img src="logo white.png" alt="LumaTech Logo" class="logo">
 
       <h1>LUMATECH</h1>
       <div class="tag">Melodic Techno Label</div>
@@ -142,13 +135,14 @@
       <div class="divider"></div>
 
       <div class="nav">
-        <a class="btn" href="#" target="_self">Releases</a>
-        <a class="btn" href="#" target="_self">Artists</a>
-        <a class="btn" href="#" target="_self">Demos</a>
-        <a class="btn" href="#" target="_self">Contact</a>
+        <a class="btn" href="#">Releases</a>
+        <a class="btn" href="#">Artists</a>
+        <a class="btn" href="#">Demos</a>
+        <a class="btn" href="#">Contact</a>
       </div>
 
       <div class="foot">© LUMATECH</div>
+
     </div>
   </div>
 </body>
