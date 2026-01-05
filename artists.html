@@ -12,7 +12,7 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    /* אותו רקע בדיוק כמו HOME */
+    /* אותו רקע כמו HOME */
     body{
       background:
         linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7)),
@@ -21,14 +21,37 @@
       background-position: center;
       background-repeat: no-repeat;
       color:#fff;
+      position: relative;
     }
 
+    /* לוגו בצד שמאל */
+    .logo-left{
+      position:absolute;
+      top:30px;
+      left:30px;
+      animation: logoFade 1.6s ease forwards;
+      opacity:0;
+    }
+
+    .logo-left img{
+      height:70px;
+      width:auto;
+      transition: transform 0.3s ease;
+      cursor:pointer;
+    }
+
+    /* הגדלה בהובר */
+    .logo-left img:hover{
+      transform: scale(1.12);
+    }
+
+    /* אזור תוכן */
     .page{
       min-height:100vh;
       display:flex;
       align-items:flex-start;
       justify-content:center;
-      padding:80px 20px;
+      padding:100px 20px;
       animation: fadeIn 1.2s ease-out forwards;
       opacity:0;
       transform: translateY(12px);
@@ -40,10 +63,34 @@
       text-align:center;
     }
 
+    /* אנימציות */
     @keyframes fadeIn{
       to{
         opacity:1;
         transform: translateY(0);
+      }
+    }
+
+    @keyframes logoFade{
+      from{
+        opacity:0;
+        transform: translateY(-10px);
+      }
+      to{
+        opacity:1;
+        transform: translateY(0);
+      }
+    }
+
+    /* רספונסיביות */
+    @media (max-width:600px){
+      .logo-left img{
+        height:55px;
+      }
+
+      .title{
+        font-size:48px;
+        letter-spacing:6px;
       }
     }
   </style>
@@ -51,6 +98,14 @@
 
 <body>
 
+  <!-- לוגו בצד שמאל עם FADE + SCALE -->
+  <div class="logo-left">
+    <a href="home.html">
+      <img src="don%20juan%20logo.png" alt="DON JUAN LOGO">
+    </a>
+  </div>
+
+  <!-- תוכן מרכזי -->
   <div class="page">
     <div class="title">ARTISTS</div>
   </div>
