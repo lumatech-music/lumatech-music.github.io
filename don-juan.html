@@ -24,48 +24,6 @@
       overflow:hidden;
     }
 
-    /* כותרת למעלה */
-    .header{
-      width:100%;
-      text-align:center;
-      padding-top:40px;
-      animation: fadeIn 1.2s ease-out forwards;
-      opacity:0;
-      transform: translateY(-10px);
-    }
-    .header h1{
-      margin:0;
-      font-size:64px;
-      letter-spacing:10px;
-    }
-
-    /* לוגו במרכז העמוד */
-    .logo-center{
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform: translate(-50%, -50%);
-      opacity:0;
-      animation: logoFade 1.6s ease forwards;
-      text-align:center;
-    }
-    .logo-center img{
-      height:320px;
-      width:auto;
-      transition: transform 0.35s ease;
-      cursor:default;
-      display:block;
-      margin:0 auto 18px auto;
-    }
-
-    /* טקסט מתחת ללוגו */
-    .artist-sub{
-      opacity:.9;
-      letter-spacing:4px;
-      font-size:12px;
-      text-transform:uppercase;
-    }
-
     /* BACK */
     .back-fixed{
       position:fixed;
@@ -89,36 +47,12 @@
       background:#fff;
       color:#000;
     }
-
-    @keyframes fadeIn{
-      to{ opacity:1; transform: translateY(0); }
-    }
-    @keyframes logoFade{
-      from{ opacity:0; transform: translate(-50%, -40%); }
-      to{ opacity:1; transform: translate(-50%, -50%); }
-    }
-
-    @media (max-width: 900px){
-      .logo-center img{ height:220px; }
-      .header h1{ font-size:48px; letter-spacing:6px; }
-    }
-    @media (max-width: 600px){
-      .logo-center img{ height:180px; }
-    }
   </style>
 </head>
 
 <body>
 
-  <div class="header">
-    <h1>DON JUAN</h1>
-  </div>
-
-  <div class="logo-center">
-    <img src="don%20juan%20logo.png" alt="DON JUAN LOGO" />
-    <div class="artist-sub">Melodic Techno</div>
-  </div>
-
+  <!-- BACK בלבד -->
   <div class="back-fixed">
     <a class="btn-link" href="artists.html">BACK</a>
   </div>
