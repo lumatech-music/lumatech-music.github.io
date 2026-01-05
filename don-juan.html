@@ -12,57 +12,61 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    /* אותו רקע כמו artists.html */
     body{
       background:
-        linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.85)),
+        linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7)),
         url("background.png");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       color:#fff;
+      position: relative;
+      overflow-x:hidden;
     }
 
-    /* HERO */
-    .hero{
-      position:relative;
-      height:100vh;
+    /* קונטיינר מרכזי */
+    .wrap{
+      min-height:100vh;
       display:flex;
       align-items:center;
       justify-content:center;
+      padding:60px 22px 140px; /* מקום לכפתור BACK */
+      box-sizing:border-box;
       text-align:center;
-      overflow:hidden;
     }
 
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.8)),
-        url("don-juan-artist.jpg");
-      background-size: cover;
-      background-position: center top;
-      filter: grayscale(100%) contrast(110%);
-      z-index:0;
-      animation: heroFade 1.8s ease forwards;
+    .card{
+      width:min(860px, 100%);
+      animation: fadeUp 1.2s ease forwards;
+      opacity:0;
+      transform: translateY(18px);
     }
 
-    .hero-content{
-      position:relative;
-      z-index:1;
-      animation: fadeUp 1.6s ease forwards;
+    .name{
+      margin:18px 0 0 0;
+      font-size:56px;
+      letter-spacing:10px;
+    }
+
+    /* תמונה עגולה */
+    .avatar{
+      width:240px;
+      height:240px;
+      border-radius:50%;
+      object-fit:cover;
+      object-position:center top;
+      border:2px solid rgba(255,255,255,.25);
+      box-shadow: 0 14px 40px rgba(0,0,0,.55);
+      display:block;
+      margin:0 auto;
+      animation: fadeIn 1.2s ease forwards;
       opacity:0;
     }
 
-    .hero h1{
-      margin:0;
-      font-size:72px;
-      letter-spacing:12px;
-    }
-
-    /* Social buttons */
+    /* כפתורי סושיאל */
     .socials{
-      margin-top:30px;
+      margin-top:26px;
       display:flex;
       justify-content:center;
       gap:18px;
@@ -76,7 +80,7 @@
       text-decoration:none;
       font-size:11px;
       letter-spacing:4px;
-      transition:.3s;
+      transition:.25s;
     }
 
     .socials a:hover{
@@ -84,32 +88,25 @@
       color:#000;
     }
 
-    /* BIO */
-    .content{
-      max-width:800px;
-      margin:80px auto 120px auto;
-      padding:0 24px;
-      text-align:center;
-      animation: fadeUp 1.8s ease forwards;
-      opacity:0;
-    }
-
+    /* ביוגרפיה */
     .bio{
+      margin:28px auto 0;
+      max-width:780px;
       font-size:15px;
       line-height:1.9;
-      opacity:.9;
+      opacity:.92;
     }
 
-    /* BACK */
+    /* BACK כמו אצלך */
     .back-fixed{
       position:fixed;
       left:50%;
       bottom:30px;
       transform:translateX(-50%);
-      z-index:10;
+      z-index: 10;
     }
-
     .btn-link{
+      display:inline-block;
       padding:14px 28px;
       background:rgba(255,255,255,.12);
       color:#fff;
@@ -119,61 +116,55 @@
       font-weight:700;
       transition:.25s;
     }
-
     .btn-link:hover{
       background:#fff;
       color:#000;
     }
 
-    @keyframes fadeUp{
-      from{ opacity:0; transform:translateY(25px); }
-      to{ opacity:1; transform:translateY(0); }
-    }
-
-    @keyframes heroFade{
-      from{ opacity:0; }
-      to{ opacity:1; }
-    }
+    @keyframes fadeIn{ to{opacity:1;} }
+    @keyframes fadeUp{ to{opacity:1; transform:translateY(0);} }
 
     @media (max-width: 800px){
-      .hero h1{ font-size:48px; letter-spacing:6px; }
+      .name{ font-size:44px; letter-spacing:6px; }
+      .avatar{ width:200px; height:200px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>DON JUAN</h1>
+  <main class="wrap">
+    <section class="card">
+
+      <!-- שים את קובץ התמונה בשם הזה -->
+      <img class="avatar" src="don-juan-artist.jpg" alt="DON JUAN artist photo" />
+
+      <h1 class="name">DON JUAN</h1>
 
       <div class="socials">
-        <a href="#" target="_blank">INSTAGRAM</a>
-        <a href="#" target="_blank">SOUNDCLOUD</a>
-        <a href="#" target="_blank">SPOTIFY</a>
+        <!-- תחליף את ה-# ללינקים האמיתיים -->
+        <a href="#" target="_blank" rel="noopener">INSTAGRAM</a>
+        <a href="#" target="_blank" rel="noopener">SOUNDCLOUD</a>
+        <a href="#" target="_blank" rel="noopener">SPOTIFY</a>
       </div>
-    </div>
-  </section>
 
-  <!-- BIO -->
-  <section class="content">
-    <p class="bio">
-      <strong>DON JUAN</strong> is a Melodic Techno artist from Israel, delivering deep,
-      emotional and driving soundscapes designed for late-night dancefloors.
-      <br><br>
-      His productions combine hypnotic grooves, atmospheric textures and powerful
-      melodic themes, creating a balance between dark energy and emotional depth.
-      <br><br>
-      Focused on storytelling through sound, DON JUAN’s music is influenced by modern
-      melodic techno and underground club culture.
-      <br><br>
-      A rising project within the LumaTech Music roster, DON JUAN is set to deliver
-      his debut releases with a clear artistic vision and strong identity.
-    </p>
-  </section>
+      <p class="bio">
+        <strong>DON JUAN</strong> is a Melodic Techno artist from Israel, delivering deep,
+        emotional and driving soundscapes designed for late-night dancefloors.
+        <br><br>
+        His productions combine hypnotic grooves, atmospheric textures and powerful
+        melodic themes, creating a balance between dark energy and emotional depth.
+        <br><br>
+        Focused on storytelling through sound, DON JUAN’s music is influenced by modern
+        melodic techno and underground club culture.
+        <br><br>
+        A rising project within the LumaTech Music roster, DON JUAN is set to deliver
+        his debut releases with a clear artistic vision and strong identity.
+      </p>
 
-  <!-- BACK -->
+    </section>
+  </main>
+
   <div class="back-fixed">
     <a class="btn-link" href="artists.html">BACK</a>
   </div>
