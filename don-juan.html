@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LumaTech – DON JUAN</title>
+  <title>DON JUAN | LumaTech Music</title>
 
   <style>
     html, body{
@@ -14,14 +14,90 @@
 
     body{
       background:
-        linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7)),
+        linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.85)),
         url("background.png");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       color:#fff;
-      position: relative;
+    }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
       overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.8)),
+        url("don-juan-artist.jpg");
+      background-size: cover;
+      background-position: center top;
+      filter: grayscale(100%) contrast(110%);
+      z-index:0;
+      animation: heroFade 1.8s ease forwards;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:1;
+      animation: fadeUp 1.6s ease forwards;
+      opacity:0;
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:72px;
+      letter-spacing:12px;
+    }
+
+    /* Social buttons */
+    .socials{
+      margin-top:30px;
+      display:flex;
+      justify-content:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .socials a{
+      padding:12px 26px;
+      border:1px solid rgba(255,255,255,.35);
+      color:#fff;
+      text-decoration:none;
+      font-size:11px;
+      letter-spacing:4px;
+      transition:.3s;
+    }
+
+    .socials a:hover{
+      background:#fff;
+      color:#000;
+    }
+
+    /* BIO */
+    .content{
+      max-width:800px;
+      margin:80px auto 120px auto;
+      padding:0 24px;
+      text-align:center;
+      animation: fadeUp 1.8s ease forwards;
+      opacity:0;
+    }
+
+    .bio{
+      font-size:15px;
+      line-height:1.9;
+      opacity:.9;
     }
 
     /* BACK */
@@ -30,10 +106,10 @@
       left:50%;
       bottom:30px;
       transform:translateX(-50%);
-      z-index: 10;
+      z-index:10;
     }
+
     .btn-link{
-      display:inline-block;
       padding:14px 28px;
       background:rgba(255,255,255,.12);
       color:#fff;
@@ -43,16 +119,61 @@
       font-weight:700;
       transition:.25s;
     }
+
     .btn-link:hover{
       background:#fff;
       color:#000;
+    }
+
+    @keyframes fadeUp{
+      from{ opacity:0; transform:translateY(25px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
+
+    @keyframes heroFade{
+      from{ opacity:0; }
+      to{ opacity:1; }
+    }
+
+    @media (max-width: 800px){
+      .hero h1{ font-size:48px; letter-spacing:6px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- BACK בלבד -->
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>DON JUAN</h1>
+
+      <div class="socials">
+        <a href="#" target="_blank">INSTAGRAM</a>
+        <a href="#" target="_blank">SOUNDCLOUD</a>
+        <a href="#" target="_blank">SPOTIFY</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIO -->
+  <section class="content">
+    <p class="bio">
+      <strong>DON JUAN</strong> is a Melodic Techno artist from Israel, delivering deep,
+      emotional and driving soundscapes designed for late-night dancefloors.
+      <br><br>
+      His productions combine hypnotic grooves, atmospheric textures and powerful
+      melodic themes, creating a balance between dark energy and emotional depth.
+      <br><br>
+      Focused on storytelling through sound, DON JUAN’s music is influenced by modern
+      melodic techno and underground club culture.
+      <br><br>
+      A rising project within the LumaTech Music roster, DON JUAN is set to deliver
+      his debut releases with a clear artistic vision and strong identity.
+    </p>
+  </section>
+
+  <!-- BACK -->
   <div class="back-fixed">
     <a class="btn-link" href="artists.html">BACK</a>
   </div>
