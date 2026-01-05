@@ -25,7 +25,23 @@
       overflow:hidden;
     }
 
-    /* לוגו – שמאל, באמצע, גדול */
+    /* ===== כותרת למעלה ===== */
+    .header{
+      width:100%;
+      text-align:center;
+      padding-top:40px;
+      animation: fadeIn 1.2s ease-out forwards;
+      opacity:0;
+      transform: translateY(-10px);
+    }
+
+    .header h1{
+      margin:0;
+      font-size:64px;
+      letter-spacing:10px;
+    }
+
+    /* ===== לוגו שמאל באמצע ===== */
     .logo-left-center{
       position:absolute;
       left:40px;
@@ -36,35 +52,17 @@
     }
 
     .logo-left-center img{
-      height:160px; /* גודל גדול */
+      height:320px; /* פי 2 מהקודם */
       width:auto;
       transition: transform 0.35s ease;
       cursor:pointer;
     }
 
-    /* הגדלה בהובר */
     .logo-left-center img:hover{
       transform: scale(1.15);
     }
 
-    /* תוכן מרכזי */
-    .page{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      animation: fadeIn 1.2s ease-out forwards;
-      opacity:0;
-      transform: translateY(12px);
-    }
-
-    .title{
-      font-size:64px;
-      letter-spacing:10px;
-      text-align:center;
-    }
-
-    /* אנימציות */
+    /* ===== אנימציות ===== */
     @keyframes fadeIn{
       to{
         opacity:1;
@@ -75,7 +73,7 @@
     @keyframes logoFade{
       from{
         opacity:0;
-        transform: translate(-10px, -50%);
+        transform: translate(-20px, -50%);
       }
       to{
         opacity:1;
@@ -83,19 +81,31 @@
       }
     }
 
-    /* מובייל */
-    @media (max-width: 768px){
+    /* ===== מובייל ===== */
+    @media (max-width: 900px){
+      .logo-left-center img{
+        height:220px;
+      }
+
+      .header h1{
+        font-size:48px;
+        letter-spacing:6px;
+      }
+    }
+
+    @media (max-width: 600px){
       .logo-left-center{
-        left:20px;
+        position:relative;
+        left:0;
+        top:auto;
+        transform:none;
+        display:flex;
+        justify-content:center;
+        margin-top:40px;
       }
 
       .logo-left-center img{
-        height:110px;
-      }
-
-      .title{
-        font-size:48px;
-        letter-spacing:6px;
+        height:200px;
       }
     }
   </style>
@@ -103,16 +113,16 @@
 
 <body>
 
+  <!-- כותרת למעלה -->
+  <div class="header">
+    <h1>ARTISTS</h1>
+  </div>
+
   <!-- לוגו שמאל באמצע -->
   <div class="logo-left-center">
     <a href="home.html">
       <img src="don%20juan%20logo.png" alt="DON JUAN LOGO">
     </a>
-  </div>
-
-  <!-- כותרת מרכזית -->
-  <div class="page">
-    <div class="title">ARTISTS</div>
   </div>
 
 </body>
