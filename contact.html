@@ -1,196 +1,224 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LumaTech – Contact</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LumaTech – Contact</title>
 
-<style>
-html, body{
-  margin:0;
-  height:100%;
-  font-family: Arial, Helvetica, sans-serif;
-}
+  <style>
+    html, body{
+      margin:0;
+      height:100%;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-body{
-  background:
-    linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7)),
-    url("background.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color:#fff;
-}
+    body{
+      background:
+        linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7)),
+        url("background.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color:#fff;
+    }
 
-/* פריסה כללית */
-.page{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  padding:60px 20px 120px;
-}
+    /* פריסה כללית */
+    .page{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      padding:60px 20px 120px; /* מקום ל-BACK הקבוע */
+      animation: fadeIn 1.2s ease-out forwards;
+      opacity:0;
+      transform: translateY(12px);
+    }
 
-/* אזור עליון */
-.top{
-  width:min(1100px, 100%);
-  animation: fadeIn 1.4s ease-out forwards;
-  opacity:0;
-  transform: translateY(12px);
-}
+    .wrap{
+      width:min(1100px, 100%);
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      gap:40px;
+    }
 
-.title{
-  text-align:center;
-  font-size:48px;
-  letter-spacing:8px;
-  margin-bottom:50px;
-}
+    /* כותרת */
+    .title{
+      text-align:center;
+      font-size:48px;
+      letter-spacing:8px;
+      margin:0;
+    }
 
-/* שורת כפתורים עליונה */
-.buttons-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-}
+    /* כפתורים עליונים */
+    .buttons-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
 
-/* כפתור בסיס */
-.btn-link{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:14px 28px;
-  background:rgba(255,255,255,.12);
-  color:#fff;
-  text-decoration:none;
-  letter-spacing:3px;
-  font-size:12px;
-  font-weight:700;
-  transition:.25s;
-}
+    /* כפתור סטייל */
+    .btn-link{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:14px 28px;
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      text-decoration:none;
+      letter-spacing:4px;
+      font-size:12px;
+      font-weight:700;
+      transition:.25s;
+      white-space:nowrap;
+    }
 
-.btn-link:hover{
-  background:#fff;
-  color:#000;
-}
+    .btn-link:hover{
+      background:#fff;
+      color:#000;
+    }
 
-/* ===== HERO BUTTONS (למעלה בלבד) ===== */
-.hero{
-  font-size:16px;
-  padding:22px 48px;
-  letter-spacing:5px;
-}
+    /* גדולים רק למעלה */
+    .hero{
+      font-size:16px;
+      padding:22px 48px;
+      letter-spacing:5px;
+    }
 
-/* אזור סושיאל */
-.social{
-  margin:80px 0 0;
-  text-align:center;
-  max-width:900px;
-}
+    /* אזור אמצעי - ממורכז באמת באמצע העמוד */
+    .middle{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:10px 0;
+    }
 
-.social-text{
-  margin-bottom:26px;
-  font-size:13px;
-  letter-spacing:3px;
-  opacity:.85;
-}
+    .social{
+      max-width: 980px;
+    }
 
-.social-buttons{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  flex-wrap:wrap;
-}
+    .social-text{
+      margin:0 0 26px;
+      font-size:13px;
+      letter-spacing:3px;
+      opacity:.85;
+      line-height:1.6;
+    }
 
-/* BACK קבוע */
-.back-fixed{
-  position:fixed;
-  left:50%;
-  bottom:30px;
-  transform:translateX(-50%);
-}
+    .social-buttons{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
 
-/* רספונסיביות */
-@media (max-width: 700px){
-  .buttons-row{
-    flex-direction:column;
-    gap:22px;
-  }
-}
+    /* אייקונים */
+    .btn-link svg{
+      width:16px;
+      height:16px;
+      display:block;
+      fill: currentColor; /* צבע כמו הטקסט */
+      transition:.25s;
+    }
 
-/* Fade */
-@keyframes fadeIn{
-  to{ opacity:1; transform: translateY(0); }
-}
-</style>
+    /* BACK קבוע למטה במרכז */
+    .back-fixed{
+      position:fixed;
+      left:50%;
+      bottom:30px;
+      transform:translateX(-50%);
+    }
+
+    /* רספונסיביות */
+    @media (max-width: 700px){
+      .buttons-row{
+        flex-direction:column;
+        gap:22px;
+      }
+    }
+
+    @keyframes fadeIn{
+      to{ opacity:1; transform: translateY(0); }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="page">
+  <div class="page">
+    <div class="wrap">
 
-  <!-- חלק עליון -->
-  <div class="top">
-    <div class="title">CONTACT</div>
+      <h1 class="title">CONTACT</h1>
 
-    <div class="buttons-row">
-      <a class="btn-link hero" href="mailto:LumaTechrecord@gmail.com">
-        SEND YOUR DEMO
-      </a>
+      <div class="buttons-row">
+        <a class="btn-link hero" href="mailto:LumaTechrecord@gmail.com">
+          SEND YOUR DEMO
+        </a>
 
-      <a class="btn-link hero" href="mailto:LumaTechrecord@gmail.com">
-        BOOKING
-      </a>
+        <a class="btn-link hero" href="mailto:LumaTechrecord@gmail.com">
+          BOOKING
+        </a>
+      </div>
+
+      <!-- אמצע העמוד -->
+      <div class="middle">
+        <div class="social">
+          <p class="social-text">
+            Follow us on social media to stay up to date with the latest news
+          </p>
+
+          <div class="social-buttons">
+            <!-- INSTAGRAM -->
+            <a class="btn-link"
+               href="https://www.instagram.com/lumatechrec?igsh=MTFoOHBhdnpndzUxYw=="
+               target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A4.5 4.5 0 1 0 16.5 12 4.51 4.51 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.81 2.81 0 0 1 12 14.8zM17.6 6.4a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1z"/>
+              </svg>
+              INSTAGRAM
+            </a>
+
+            <!-- FACEBOOK -->
+            <a class="btn-link"
+               href="https://www.facebook.com/profile.php?id=61586012272654"
+               target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2V9.5A3 3 0 0 1 13.7 6h2.3v3h-1.6c-.5 0-.7.3-.7.7V12h2.3l-.4 3h-1.9v7A10 10 0 0 0 22 12z"/>
+              </svg>
+              FACEBOOK
+            </a>
+
+            <!-- YOUTUBE (תעדכן לינק כשתהיה כתובת) -->
+            <a class="btn-link"
+               href="#"
+               target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.2 3.5z"/>
+              </svg>
+              YOUTUBE
+            </a>
+
+            <!-- TIKTOK (תעדכן לינק כשתהיה כתובת) -->
+            <a class="btn-link"
+               href="#"
+               target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 8.2a6.6 6.6 0 0 1-4.2-1.5v7.1a5.4 5.4 0 1 1-4.6-5.3v2.9a2.6 2.6 0 1 0 1.8 2.4V2h3a6.6 6.6 0 0 0 4 3.8z"/>
+              </svg>
+              TIKTOK
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- אזור סושיאל -->
-<div class="social-buttons">
-
-  <a class="btn-link"
-     href="https://www.instagram.com/lumatechrec?igsh=MTFoOHBhdnpndzUxYw=="
-     target="_blank" rel="noopener noreferrer">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A4.5 4.5 0 1 0 16.5 12 4.51 4.51 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.81 2.81 0 0 1 12 14.8zM17.6 6.4a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1z"/>
-    </svg>
-    INSTAGRAM
-  </a>
-
-  <a class="btn-link"
-     href="https://www.facebook.com/profile.php?id=61586012272654"
-     target="_blank" rel="noopener noreferrer">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2V9.5A3 3 0 0 1 13.7 6h2.3v3h-1.6c-.5 0-.7.3-.7.7V12h2.3l-.4 3h-1.9v7A10 10 0 0 0 22 12z"/>
-    </svg>
-    FACEBOOK
-  </a>
-
-  <a class="btn-link"
-     href="#"
-     target="_blank" rel="noopener noreferrer">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.2 3.5z"/>
-    </svg>
-    YOUTUBE
-  </a>
-
-  <a class="btn-link"
-     href="#"
-     target="_blank" rel="noopener noreferrer">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M21 8.2a6.6 6.6 0 0 1-4.2-1.5v7.1a5.4 5.4 0 1 1-4.6-5.3v2.9a2.6 2.6 0 1 0 1.8 2.4V2h3a6.6 6.6 0 0 0 4 3.8z"/>
-    </svg>
-    TIKTOK
-  </a>
-
-</div>
-
-
-<!-- BACK -->
-<div class="back-fixed">
-  <a class="btn-link" href="home.html">BACK</a>
-</div>
+  <div class="back-fixed">
+    <a class="btn-link" href="home.html">BACK</a>
+  </div>
 
 </body>
 </html>
