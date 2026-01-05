@@ -12,7 +12,7 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    /* אותו רקע כמו HOME */
+    /* רקע זהה ל-HOME */
     body{
       background:
         linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7)),
@@ -22,36 +22,37 @@
       background-repeat: no-repeat;
       color:#fff;
       position: relative;
+      overflow:hidden;
     }
 
-    /* לוגו בצד שמאל */
-    .logo-left{
+    /* לוגו – שמאל, באמצע, גדול */
+    .logo-left-center{
       position:absolute;
-      top:30px;
-      left:30px;
-      animation: logoFade 1.6s ease forwards;
+      left:40px;
+      top:50%;
+      transform: translateY(-50%);
       opacity:0;
+      animation: logoFade 1.6s ease forwards;
     }
 
-    .logo-left img{
-      height:70px;
+    .logo-left-center img{
+      height:160px; /* גודל גדול */
       width:auto;
-      transition: transform 0.3s ease;
+      transition: transform 0.35s ease;
       cursor:pointer;
     }
 
     /* הגדלה בהובר */
-    .logo-left img:hover{
-      transform: scale(1.12);
+    .logo-left-center img:hover{
+      transform: scale(1.15);
     }
 
-    /* אזור תוכן */
+    /* תוכן מרכזי */
     .page{
       min-height:100vh;
       display:flex;
-      align-items:flex-start;
+      align-items:center;
       justify-content:center;
-      padding:100px 20px;
       animation: fadeIn 1.2s ease-out forwards;
       opacity:0;
       transform: translateY(12px);
@@ -74,18 +75,22 @@
     @keyframes logoFade{
       from{
         opacity:0;
-        transform: translateY(-10px);
+        transform: translate(-10px, -50%);
       }
       to{
         opacity:1;
-        transform: translateY(0);
+        transform: translate(0, -50%);
       }
     }
 
-    /* רספונסיביות */
-    @media (max-width:600px){
-      .logo-left img{
-        height:55px;
+    /* מובייל */
+    @media (max-width: 768px){
+      .logo-left-center{
+        left:20px;
+      }
+
+      .logo-left-center img{
+        height:110px;
       }
 
       .title{
@@ -98,14 +103,14 @@
 
 <body>
 
-  <!-- לוגו בצד שמאל עם FADE + SCALE -->
-  <div class="logo-left">
+  <!-- לוגו שמאל באמצע -->
+  <div class="logo-left-center">
     <a href="home.html">
       <img src="don%20juan%20logo.png" alt="DON JUAN LOGO">
     </a>
   </div>
 
-  <!-- תוכן מרכזי -->
+  <!-- כותרת מרכזית -->
   <div class="page">
     <div class="title">ARTISTS</div>
   </div>
