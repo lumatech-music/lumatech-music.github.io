@@ -6,14 +6,12 @@
 <title>LumaTech – Contact</title>
 
 <style>
-/* ===== בסיס ===== */
 html, body{
   margin:0;
   height:100%;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ===== רקע (כמו HOME) ===== */
 body{
   background:
     linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7)),
@@ -24,17 +22,15 @@ body{
   color:#fff;
 }
 
-/* ===== עטיפה כללית ===== */
+/* אזור עליון */
 .page{
   min-height:100vh;
   display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:space-between;
-  padding:60px 20px 40px;
+  align-items:flex-start;
+  justify-content:center;
+  padding:60px 20px 120px; /* משאיר מקום ל-BACK */
 }
 
-/* ===== אזור עליון ===== */
 .top{
   width:min(1100px, 100%);
   animation: fadeIn 1.4s ease-out forwards;
@@ -42,7 +38,6 @@ body{
   transform: translateY(12px);
 }
 
-/* ===== כותרת ===== */
 .title{
   text-align:center;
   font-size:48px;
@@ -50,7 +45,6 @@ body{
   margin-bottom:50px;
 }
 
-/* ===== שורת כפתורים עליונה ===== */
 .buttons-row{
   display:flex;
   justify-content:space-between;
@@ -58,7 +52,7 @@ body{
   gap:20px;
 }
 
-/* ===== כפתור סטייל HOME ===== */
+/* כפתורים כמו HOME */
 .btn-link{
   display:inline-block;
   padding:14px 28px;
@@ -76,12 +70,15 @@ body{
   color:#000;
 }
 
-/* ===== כפתור BACK בתחתית ===== */
-.bottom{
-  margin-top:40px;
+/* BACK קבוע למטה במרכז */
+.back-fixed{
+  position:fixed;
+  left:50%;
+  bottom:30px;
+  transform:translateX(-50%);
 }
 
-/* ===== רספונסיביות ===== */
+/* רספונסיביות */
 @media (max-width: 700px){
   .buttons-row{
     flex-direction:column;
@@ -89,45 +86,29 @@ body{
   }
 }
 
-/* ===== Fade In ===== */
 @keyframes fadeIn{
-  to{
-    opacity:1;
-    transform: translateY(0);
-  }
+  to{ opacity:1; transform: translateY(0); }
 }
 </style>
 </head>
 
 <body>
 
-<div class="page">
+  <div class="page">
+    <div class="top">
+      <div class="title">CONTACT</div>
 
-  <!-- חלק עליון -->
-  <div class="top">
-
-    <div class="title">CONTACT</div>
-
-    <div class="buttons-row">
-      <a class="btn-link" href="mailto:LumaTechrecord@gmail.com">
-        SEND YOUR DEMO
-      </a>
-
-      <a class="btn-link" href="mailto:LumaTechrecord@gmail.com">
-        BOOKING
-      </a>
+      <div class="buttons-row">
+        <a class="btn-link" href="mailto:LumaTechrecord@gmail.com">SEND YOUR DEMO</a>
+        <a class="btn-link" href="mailto:LumaTechrecord@gmail.com">BOOKING</a>
+      </div>
     </div>
-
   </div>
 
-  <!-- כפתור BACK במרכז למטה -->
-  <div class="bottom">
-    <a class="btn-link" href="home.html">
-      BACK
-    </a>
+  <!-- תמיד יופיע -->
+  <div class="back-fixed">
+    <a class="btn-link" href="home.html">BACK</a>
   </div>
-
-</div>
 
 </body>
 </html>
