@@ -41,24 +41,24 @@
       letter-spacing:10px;
     }
 
-    /* ===== לוגו שמאל באמצע ===== */
-    .logo-left-center{
+    /* ===== לוגו במרכז העמוד ===== */
+    .logo-center{
       position:absolute;
-      left:40px;
       top:50%;
-      transform: translateY(-50%);
+      left:50%;
+      transform: translate(-50%, -50%);
       opacity:0;
       animation: logoFade 1.6s ease forwards;
     }
 
-    .logo-left-center img{
-      height:320px; /* פי 2 מהקודם */
+    .logo-center img{
+      height:320px; /* גדול */
       width:auto;
       transition: transform 0.35s ease;
       cursor:pointer;
     }
 
-    .logo-left-center img:hover{
+    .logo-center img:hover{
       transform: scale(1.15);
     }
 
@@ -73,17 +73,17 @@
     @keyframes logoFade{
       from{
         opacity:0;
-        transform: translate(-20px, -50%);
+        transform: translate(-50%, -40%);
       }
       to{
         opacity:1;
-        transform: translate(0, -50%);
+        transform: translate(-50%, -50%);
       }
     }
 
     /* ===== מובייל ===== */
     @media (max-width: 900px){
-      .logo-left-center img{
+      .logo-center img{
         height:220px;
       }
 
@@ -94,18 +94,8 @@
     }
 
     @media (max-width: 600px){
-      .logo-left-center{
-        position:relative;
-        left:0;
-        top:auto;
-        transform:none;
-        display:flex;
-        justify-content:center;
-        margin-top:40px;
-      }
-
-      .logo-left-center img{
-        height:200px;
+      .logo-center img{
+        height:180px;
       }
     }
   </style>
@@ -118,8 +108,8 @@
     <h1>ARTISTS</h1>
   </div>
 
-  <!-- לוגו שמאל באמצע -->
-  <div class="logo-left-center">
+  <!-- לוגו במרכז -->
+  <div class="logo-center">
     <a href="home.html">
       <img src="don%20juan%20logo.png" alt="DON JUAN LOGO">
     </a>
