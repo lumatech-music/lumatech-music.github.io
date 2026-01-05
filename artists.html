@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LumaTech – Artists</title>
 
   <style>
@@ -12,7 +12,6 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    /* רקע זהה ל-HOME */
     body{
       background:
         linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7)),
@@ -25,7 +24,7 @@
       overflow:hidden;
     }
 
-    /* ===== כותרת למעלה ===== */
+    /* כותרת למעלה */
     .header{
       width:100%;
       text-align:center;
@@ -34,14 +33,13 @@
       opacity:0;
       transform: translateY(-10px);
     }
-
     .header h1{
       margin:0;
       font-size:64px;
       letter-spacing:10px;
     }
 
-    /* ===== לוגו במרכז ===== */
+    /* לוגו במרכז העמוד */
     .logo-center{
       position:absolute;
       top:50%;
@@ -50,26 +48,25 @@
       opacity:0;
       animation: logoFade 1.6s ease forwards;
     }
-
     .logo-center img{
       height:320px;
       width:auto;
       transition: transform 0.35s ease;
       cursor:pointer;
+      display:block;
     }
-
     .logo-center img:hover{
       transform: scale(1.15);
     }
 
-    /* ===== כפתור BACK (כמו CONTACT) ===== */
+    /* BACK כמו ב-CONTACT */
     .back-fixed{
       position:fixed;
       left:50%;
       bottom:30px;
       transform:translateX(-50%);
+      z-index: 10;
     }
-
     .btn-link{
       display:inline-block;
       padding:14px 28px;
@@ -81,21 +78,44 @@
       font-weight:700;
       transition:.25s;
     }
-
     .btn-link:hover{
       background:#fff;
       color:#000;
     }
 
-    /* ===== אנימציות ===== */
     @keyframes fadeIn{
-      to{
-        opacity:1;
-        transform: translateY(0);
-      }
+      to{ opacity:1; transform: translateY(0); }
+    }
+    @keyframes logoFade{
+      from{ opacity:0; transform: translate(-50%, -40%); }
+      to{ opacity:1; transform: translate(-50%, -50%); }
     }
 
-    @keyframes logoFade{
-      from{
-        opacity:0;
-        transform: translat
+    @media (max-width: 900px){
+      .logo-center img{ height:220px; }
+      .header h1{ font-size:48px; letter-spacing:6px; }
+    }
+    @media (max-width: 600px){
+      .logo-center img{ height:180px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>ARTISTS</h1>
+  </div>
+
+  <div class="logo-center">
+    <a href="home.html">
+      <img src="don%20juan%20logo.png" alt="DON JUAN LOGO" />
+    </a>
+  </div>
+
+  <div class="back-fixed">
+    <a class="btn-link" href="home.html">BACK</a>
+  </div>
+
+</body>
+</html>
