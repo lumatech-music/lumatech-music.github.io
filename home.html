@@ -145,36 +145,48 @@ h1{
   opacity:1;
 }
 
-/* ===== WHATSAPP FLOAT BUTTON ===== */
+/* ===== WHATSAPP FLOAT TEXT BUTTON ===== */
 .whatsapp-float{
   position:fixed;
   right:22px;
   bottom:22px;
-  width:58px;
-  height:58px;
-  border-radius:50%;
-  background:#25D366;
+  background:rgba(0,0,0,.6);
+  backdrop-filter: blur(6px);
+  padding:12px 18px;
+  border-radius:40px;
   display:flex;
   align-items:center;
-  justify-content:center;
-  box-shadow:0 0 20px rgba(0,0,0,.5);
+  gap:10px;
+  text-decoration:none;
+  box-shadow:0 0 20px rgba(0,0,0,.6);
   z-index:1000;
   transition:.25s ease;
 }
 
 .whatsapp-float img{
-  width:30px;
+  width:22px;
+  height:auto;
+}
+
+.whatsapp-float span{
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1px;
+  line-height:1.2;
+  white-space:nowrap;
 }
 
 .whatsapp-float:hover{
-  transform:scale(1.1);
-  box-shadow:0 0 28px rgba(37,211,102,.8);
+  transform:scale(1.08);
+  box-shadow:0 0 28px rgba(37,211,102,.6);
 }
 
 /* ===== MOBILE ===== */
 @media(max-width:600px){
   h1{ font-size:32px; letter-spacing:6px; }
   .footer-left{ font-size:10px; left:12px; bottom:10px; }
+  .whatsapp-float span{ display:none; } /* במובייל יישאר רק האייקון */
 }
 </style>
 </head>
@@ -193,7 +205,6 @@ h1{
     <a href="contact.html">CONTACT</a>
   </div>
 
-  <!-- ✅ WHATSAPP MAIN CTA -->
   <div class="whatsapp-cta">
     <a href="https://chat.whatsapp.com/Hw4geis1c3pENPVwpwmjKh" target="_blank">
       Join the Official LUMATECH WhatsApp Updates Group
@@ -207,12 +218,15 @@ h1{
   <span>All Rights Reserved. Lumatech Music © 2026</span>
 </div>
 
-<!-- ✅ WHATSAPP FLOATING BUTTON -->
+<!-- ✅ FLOATING WHATSAPP TEXT BUTTON -->
 <a href="https://chat.whatsapp.com/Hw4geis1c3pENPVwpwmjKh" 
    target="_blank" 
-   class="whatsapp-float" 
-   title="Join LumaTech Updates">
+   class="whatsapp-float"
+   title="Join the Official LUMATECH WhatsApp Updates Group">
+
    <img src="whatsapp.png" alt="WhatsApp">
+   <span>Join the Official LumaTech WhatsApp Updates Group</span>
+
 </a>
 
 </body>
