@@ -109,11 +109,36 @@ h1{
   z-index:999;
 }
 
-/* 🔥 כאן התיקון */
 .footer-left img{
-  width:64px;   /* לוגו גדול וברור יותר */
+  width:64px;
   height:auto;
-  opacity:1;    /* לא שקוף */
+  opacity:1;
+}
+
+/* ===== WHATSAPP FLOAT BUTTON ===== */
+.whatsapp-float{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#25D366;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 0 20px rgba(0,0,0,.5);
+  z-index:1000;
+  transition:.25s ease;
+}
+
+.whatsapp-float img{
+  width:30px;
+}
+
+.whatsapp-float:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 28px rgba(37,211,102,.8);
 }
 
 /* ===== MOBILE ===== */
@@ -143,6 +168,14 @@ h1{
   <img src="logo white.png" alt="Lumatech Logo">
   <span>All Rights Reserved. Lumatech Music © 2026</span>
 </div>
+
+<!-- ✅ WHATSAPP FLOATING BUTTON -->
+<a href="https://chat.whatsapp.com/Hw4geis1c3pENPVwpwmjKh" 
+   target="_blank" 
+   class="whatsapp-float" 
+   title="Join LumaTech Music Updates">
+   <img src="whatsapp.png" alt="WhatsApp">
+</a>
 
 </body>
 </html>
