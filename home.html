@@ -3,58 +3,62 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LumaTech</title>
+<title>LumaTech Music</title>
 
 <style>
-/* ===== בסיס ===== */
+/* ===== RESET ===== */
+*{ box-sizing:border-box; }
 html, body{
   margin:0;
   height:100%;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ===== רקע ===== */
+/* ===== BACKGROUND + CENTER ===== */
 body{
+  min-height:100vh;
   background:
-    linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7)),
+    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.75)),
     url("background.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
   color:#fff;
+
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
 }
 
-/* ===== קונטיינר ===== */
-.container{
+/* ===== MAIN CONTENT ===== */
+.main{
   padding:40px 20px;
 }
 
-/* ===== לוגו ===== */
+/* ===== LOGO ===== */
 .logo{
-  max-width:420px;
   width:90%;
-  margin-bottom:30px;
+  max-width:420px;
+  margin:0 auto 30px;
+  display:block;
 }
 
-/* ===== טקסט ===== */
+/* ===== TEXT ===== */
 h1{
   margin:0;
   font-size:44px;
   letter-spacing:8px;
 }
 
-.tag{
+.tagline{
   margin-top:12px;
   font-size:12px;
   letter-spacing:4px;
   opacity:.75;
 }
 
-/* ===== כפתורים ===== */
+/* ===== BUTTONS ===== */
 .buttons{
   margin-top:40px;
   display:flex;
@@ -63,7 +67,7 @@ h1{
   justify-content:center;
 }
 
-a{
+.buttons a{
   padding:14px 28px;
   background:rgba(255,255,255,.12);
   color:#fff;
@@ -71,47 +75,69 @@ a{
   letter-spacing:4px;
   font-size:12px;
   font-weight:700;
-  transition:.25s;
+  transition:.25s ease;
 }
 
-a:hover{
+.buttons a:hover{
   background:#fff;
   color:#000;
+  transform:scale(1.05);
 }
 
 /* ===== FADE IN ===== */
 .fade{
   opacity:0;
-  transform: translateY(12px);
-  animation: fadeIn 1.4s ease-out forwards;
+  transform:translateY(12px);
+  animation:fadeIn 1.4s ease-out forwards;
 }
 
 @keyframes fadeIn{
-  to{
-    opacity:1;
-    transform: translateY(0);
-  }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+/* ===== FOOTER LEFT ===== */
+.footer-left{
+  position:fixed;
+  left:18px;
+  bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:11px;
+  letter-spacing:1px;
+  opacity:.65;
+  z-index:999;
+}
+
+.footer-left img{
+  width:22px;
+  height:auto;
+  opacity:.8;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:600px){
+  h1{ font-size:32px; letter-spacing:6px; }
+  .footer-left{ font-size:10px; left:12px; bottom:10px; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container fade">
-  <img src="logo white.png" class="logo" alt="LumaTech">
+<div class="main fade">
+  <img src="logo white.png" class="logo" alt="LumaTech Music">
 
   <h1>LUMATECH</h1>
-  <div class="tag">INDEPENDENT MUSIC LABEL</div>
+  <div class="tagline">INDEPENDENT MUSIC LABEL</div>
 
   <div class="buttons">
     <a href="releases.html">RELEASES</a>
     <a href="artists.html">ARTISTS</a>
     <a href="contact.html">CONTACT</a>
-
   </div>
 </div>
 
-  <!-- FOOTER -->
 <div class="footer-left">
   <img src="logo white.png" alt="Lumatech Logo">
   <span>All Rights Reserved. Lumatech Music © 2026</span>
