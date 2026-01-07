@@ -178,5 +178,20 @@ body {
   width:28px;   /* לוגו קצת יותר גדול וברור */
   height:auto;
   opacity:.9;   /* חד יותר */
+
+  /* ===== SLIDE / FADE ANIMATION ===== */
+.release-content{
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+.release-hide{
+  opacity:0;
+  transform:translateX(-20px);
+}
+
+.release-show{
+  opacity:1;
+  transform:translateX(0);
+}
 }
 }
