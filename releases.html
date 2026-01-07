@@ -80,8 +80,8 @@ h1{
   padding:16px;
   border-radius:16px;
   text-align:left;
-  position:relative;          /* ✅ בשביל החצים */
-  overflow:hidden;            /* ✅ שהכל יישאר בתוך הקוביה */
+  position:relative;
+  overflow:hidden; /* ✅ כדי שהסלייד לא ייצא מהקובייה */
 }
 
 /* ===== Cover ===== */
@@ -206,6 +206,33 @@ h1{
   fill:currentColor;
 }
 
+/* ✅ ===== SLIDE TRANSITION (real slide) ===== */
+#releaseViewport{
+  transition: transform .45s ease, opacity .45s ease;
+  will-change: transform, opacity;
+}
+
+.slide-out-left{
+  transform: translateX(-55%);
+  opacity: 0;
+}
+.slide-out-right{
+  transform: translateX(55%);
+  opacity: 0;
+}
+.slide-in-left{
+  transform: translateX(-55%);
+  opacity: 0;
+}
+.slide-in-right{
+  transform: translateX(55%);
+  opacity: 0;
+}
+.slide-center{
+  transform: translateX(0);
+  opacity: 1;
+}
+
 /* ===== WHATSAPP FLOAT BUTTON ===== */
 .whatsapp-float{
   position:fixed;
@@ -267,7 +294,7 @@ h1{
 @media (max-width:480px){
   h1{font-size:34px;letter-spacing:6px}
   .whatsapp-float span{ display:none; }
-  .slider-btn{ width:38px; height:38px; } /* ✅ קצת קטן במובייל */
+  .slider-btn{ width:38px; height:38px; }
 }
 </style>
 </head>
@@ -283,10 +310,8 @@ h1{
 
   <div class="grid">
 
-    <!-- ✅ RELEASE SLIDER CARD (same cube, now dynamic) -->
     <div class="card" id="releaseCard">
 
-      <!-- arrows inside the cube -->
       <button class="slider-btn slider-prev" id="prevBtn" aria-label="Previous release">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M15.5 19 8.5 12l7-7 1.5 1.5L11.5 12l5.5 5.5z"/>
@@ -299,22 +324,27 @@ h1{
         </svg>
       </button>
 
-      <img id="coverImg" src="LUM001.png" class="cover" alt="LUM001 Cover">
+      <!-- ✅ viewport that slides -->
+      <div id="releaseViewport" class="slide-center">
 
-      <div class="meta" id="catalogText">CATALOG: LUM001</div>
-      <div class="title" id="titleText">Don Juan – Out Of My Mind</div>
-      <div class="meta" id="dateText">Release Date: Coming Soon...</div>
+        <img id="coverImg" src="LUM001.png" class="cover" alt="LUM001 Cover">
 
-      <div class="player">
-        <audio id="audioPlayer" controls preload="none" controlsList="nodownload noplaybackrate">
-          <source id="audioSource" src="demo-lum001.mp3" type="audio/mpeg">
-        </audio>
-      </div>
+        <div class="meta" id="catalogText">CATALOG: LUM001</div>
+        <div class="title" id="titleText">Don Juan – Out Of My Mind</div>
+        <div class="meta" id="dateText">Release Date: Coming Soon...</div>
 
-      <div class="links">
-        <a id="spotifyLink" href="#" target="_blank" rel="noopener">Spotify</a>
-        <a id="beatportLink" href="#" target="_blank" rel="noopener">Beatport</a>
-        <a id="soundcloudLink" href="#" target="_blank" rel="noopener">SoundCloud</a>
+        <div class="player">
+          <audio id="audioPlayer" controls preload="none" controlsList="nodownload noplaybackrate">
+            <source id="audioSource" src="demo-lum001.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+
+        <div class="links">
+          <a id="spotifyLink" href="#" target="_blank" rel="noopener">Spotify</a>
+          <a id="beatportLink" href="#" target="_blank" rel="noopener">Beatport</a>
+          <a id="soundcloudLink" href="#" target="_blank" rel="noopener">SoundCloud</a>
+        </div>
+
       </div>
 
     </div>
@@ -327,23 +357,20 @@ h1{
 
 </div>
 
-<!-- FOOTER LEFT -->
 <div class="footer-left">
   <img src="logo white.png" alt="Lumatech Logo">
   <span>All Rights Reserved. Lumatech Music © 2026</span>
 </div>
 
-<!-- ✅ FLOATING WHATSAPP -->
 <a href="https://chat.whatsapp.com/Hw4geis1c3pENPVwpwmjKh"
    target="_blank"
    class="whatsapp-float"
-   title="Join the Official LUMATECH WhatsApp Updates Group">
+   title="Join the Official LumaTech WhatsApp Updates Group">
    <img src="whatsapp.png" alt="WhatsApp">
    <span>Join the Official LumaTech WhatsApp Updates Group</span>
 </a>
 
 <script>
-/* ✅ הוסף פה ריליסים (החצים יחליפו ביניהם) */
 const releases = [
   {
     catalog: "LUM001",
@@ -353,19 +380,20 @@ const releases = [
     demo: "demo-lum001.mp3",
     links: { spotify:"#", beatport:"#", soundcloud:"#" }
   },
-
-  /* דוגמה לריליס שני – תעדכן שמות קבצים/לינקים אמיתיים */
-   {
-     catalog: "LUM002",
-     title: "Don Juan – Driving Me Insane",
-     date: "Coming Soon...",
-     cover: "LUM002.png",
-     demo: "demo-lum002.mp3",
-     links: { spotify:"#", beatport:"#", soundcloud:"#" }
-   }
+  {
+    catalog: "LUM002",
+    title: "Don Juan – Driving Me Insane",
+    date: "Coming Soon...",
+    cover: "LUM002.png",
+    demo: "demo-lum002.mp3",
+    links: { spotify:"#", beatport:"#", soundcloud:"#" }
+  }
 ];
 
 let idx = 0;
+let isAnimating = false;
+
+const viewport = document.getElementById("releaseViewport");
 
 const coverImg = document.getElementById("coverImg");
 const catalogText = document.getElementById("catalogText");
@@ -382,44 +410,71 @@ const audioSource = document.getElementById("audioSource");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 
-function renderRelease(){
-  const r = releases[idx];
-
+function setReleaseContent(r){
   coverImg.src = r.cover;
   coverImg.alt = r.catalog + " Cover";
-
   catalogText.textContent = "CATALOG: " + r.catalog;
   titleText.textContent = r.title;
   dateText.textContent = "Release Date: " + r.date;
 
-  spotifyLink.href = (r.links && r.links.spotify) ? r.links.spotify : "#";
-  beatportLink.href = (r.links && r.links.beatport) ? r.links.beatport : "#";
-  soundcloudLink.href = (r.links && r.links.soundcloud) ? r.links.soundcloud : "#";
+  spotifyLink.href = r.links?.spotify || "#";
+  beatportLink.href = r.links?.beatport || "#";
+  soundcloudLink.href = r.links?.soundcloud || "#";
 
-  // Update audio safely
   audioPlayer.pause();
   audioSource.src = r.demo || "";
   audioPlayer.load();
+}
 
-  // אם יש רק ריליס אחד – החצים יהיו disabled
-  const onlyOne = releases.length <= 1;
-  prevBtn.disabled = onlyOne;
-  nextBtn.disabled = onlyOne;
+function animateTo(newIndex, dir){
+  if (isAnimating) return;
+  if (releases.length <= 1) return;
+
+  isAnimating = true;
+
+  // slide out current
+  viewport.classList.remove("slide-center","slide-in-left","slide-in-right");
+  viewport.classList.add(dir === "next" ? "slide-out-left" : "slide-out-right");
+
+  setTimeout(() => {
+    idx = newIndex;
+    setReleaseContent(releases[idx]);
+
+    // prepare to slide in
+    viewport.classList.remove("slide-out-left","slide-out-right");
+    viewport.classList.add(dir === "next" ? "slide-in-right" : "slide-in-left");
+
+    // force reflow
+    void viewport.offsetWidth;
+
+    // slide to center
+    viewport.classList.remove("slide-in-left","slide-in-right");
+    viewport.classList.add("slide-center");
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 480);
+
+  }, 300);
 }
 
 prevBtn.addEventListener("click", () => {
-  if (releases.length <= 1) return;
-  idx = (idx - 1 + releases.length) % releases.length;
-  renderRelease();
+  const newIndex = (idx - 1 + releases.length) % releases.length;
+  animateTo(newIndex, "prev");
 });
 
 nextBtn.addEventListener("click", () => {
-  if (releases.length <= 1) return;
-  idx = (idx + 1) % releases.length;
-  renderRelease();
+  const newIndex = (idx + 1) % releases.length;
+  animateTo(newIndex, "next");
 });
 
-renderRelease();
+// init
+setReleaseContent(releases[idx]);
+
+// disable if only one
+const onlyOne = releases.length <= 1;
+prevBtn.disabled = onlyOne;
+nextBtn.disabled = onlyOne;
 </script>
 
 </body>
