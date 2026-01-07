@@ -14,6 +14,17 @@ html, body{
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.player{
+  margin-top:14px;
+}
+
+audio{
+  width:100%;
+  max-width:320px;
+  display:block;
+  margin:0 auto;
+}
+
 /* ===== רקע (זהה ל־home) ===== */
 body{
   background:
@@ -33,7 +44,7 @@ body{
 .container{
   padding:40px 20px;
   width:100%;
-  max-width:900px;
+  max-width:1100px;
 }
 
 /* ===== כותרות ===== */
@@ -58,30 +69,69 @@ h1{
   margin:30px auto 40px;
 }
 
-/* ===== Contact Box ===== */
-.contact-box{
+/* ===== Grid ===== */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap:26px;
+}
+
+/* ===== Card ===== */
+.card{
   background:rgba(0,0,0,.25);
-  padding:28px 22px;
-  border-radius:18px;
-  max-width:520px;
-  margin:0 auto;
+  padding:16px;
+  border-radius:16px;
+  text-align:left;
 }
 
-.contact-line{
-  margin:14px 0;
-  font-size:13px;
-  letter-spacing:2px;
-  opacity:.9;
+/* ===== Cover ===== */
+.cover{
+  width:100%;
+  max-width:220px;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:14px;
+  margin:0 auto 14px;
+  display:block;
 }
 
-.contact-line a{
+/* ===== Meta ===== */
+.meta{
+  font-size:11px;
+  letter-spacing:3px;
+  opacity:.75;
+}
+
+/* ===== Title ===== */
+.title{
+  margin:6px 0 10px;
+  font-size:14px;
+  letter-spacing:3px;
+  font-weight:700;
+  text-transform:uppercase;
+}
+
+/* ===== Links (רשתות) ===== */
+.links{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.links a{
+  padding:10px 14px;
+  background:rgba(255,255,255,.12);
   color:#fff;
   text-decoration:none;
-  font-weight:700;
+  letter-spacing:3px;
+  font-size:11px;
+  transition:.25s;
 }
 
-.contact-line a:hover{
-  text-decoration:underline;
+.links a:hover{
+  background:#fff;
+  color:#000;
 }
 
 /* ===== Back Button ===== */
@@ -139,6 +189,7 @@ h1{
 
 .whatsapp-float img{
   width:22px;
+  height:auto;
 }
 
 .whatsapp-float span{
@@ -146,6 +197,7 @@ h1{
   font-size:11px;
   font-weight:700;
   letter-spacing:1px;
+  line-height:1.2;
   white-space:nowrap;
 }
 
@@ -167,24 +219,30 @@ h1{
 <div class="container fade">
 
   <h1>CONTACT</h1>
-  <div class="tag">GET IN TOUCH WITH LUMATECH</div>
+  <div class="tag">LUMATECH CONTACT</div>
 
   <div class="divider"></div>
 
-  <div class="contact-box">
-    <div class="contact-line">📩 Demo Submissions:</div>
-    <div class="contact-line">
-      <a href="mailto:lumatechmusic@gmail.com">lumatechmusic@gmail.com</a>
+  <div class="grid">
+
+    <div class="card">
+      <div class="meta">EMAIL</div>
+      <div class="title">Demo Submissions</div>
+      <div class="links">
+        <a href="mailto:lumatechmusic@gmail.com">lumatechmusic@gmail.com</a>
+      </div>
     </div>
 
-    <div class="contact-line" style="margin-top:22px;">🌐 Social:</div>
-    <div class="contact-line">
-      Instagram: <a href="#" target="_blank">@lumatechmusic</a>
+    <div class="card">
+      <div class="meta">SOCIAL</div>
+      <div class="title">Follow LumaTech</div>
+      <div class="links">
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">SoundCloud</a>
+        <a href="#" target="_blank">Facebook</a>
+      </div>
     </div>
 
-    <div class="contact-line">
-      SoundCloud: <a href="#" target="_blank">LumaTech Music</a>
-    </div>
   </div>
 
   <div class="back">
