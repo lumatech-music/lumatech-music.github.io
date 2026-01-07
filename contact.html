@@ -43,7 +43,6 @@ h1{
   font-size:44px;
   letter-spacing:8px;
 }
-
 .tagline{
   margin-top:12px;
   font-size:12px;
@@ -64,17 +63,24 @@ h1{
   background:rgba(0,0,0,.28);
   padding:34px 24px;
   border-radius:20px;
-  max-width:540px;
+  max-width:560px;
   margin:0 auto;
 }
 
-/* ===== MAIN BUTTON ===== */
+/* ===== CTA BUTTONS ===== */
+.cta-row{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
 .main-btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
   gap:10px;
-  padding:16px 36px;
+  padding:16px 28px;
   border-radius:40px;
   background:#fff;
   color:#000;
@@ -85,14 +91,28 @@ h1{
   transition:.25s ease;
 }
 
+.main-btn svg{
+  width:18px;
+  height:18px;
+  fill: currentColor;
+}
+
 .main-btn:hover{
-  transform:scale(1.08);
+  transform:scale(1.06);
   box-shadow:0 0 26px rgba(255,255,255,.6);
+}
+
+/* ===== INFO TEXT ===== */
+.info-line{
+  margin-top:20px;
+  font-size:12px;
+  letter-spacing:2px;
+  opacity:.8;
 }
 
 /* ===== SOCIAL ICON BUTTONS ===== */
 .socials{
-  margin-top:26px;
+  margin-top:24px;
   display:flex;
   justify-content:center;
   gap:14px;
@@ -131,7 +151,6 @@ h1{
 .back{
   margin-top:40px;
 }
-
 .back a{
   padding:12px 28px;
   background:rgba(255,255,255,.12);
@@ -142,7 +161,6 @@ h1{
   font-weight:700;
   transition:.25s;
 }
-
 .back a:hover{
   background:#fff;
   color:#000;
@@ -154,7 +172,6 @@ h1{
   transform:translateY(14px);
   animation:fadeIn 1.3s ease-out forwards;
 }
-
 @keyframes fadeIn{
   to{ opacity:1; transform:translateY(0); }
 }
@@ -177,8 +194,7 @@ h1{
   transition:.25s ease;
 }
 
-.whatsapp-float img{ width:22px; }
-
+.whatsapp-float img{ width:22px; height:auto; }
 .whatsapp-float span{
   color:#fff;
   font-size:11px;
@@ -186,10 +202,28 @@ h1{
   letter-spacing:1px;
   white-space:nowrap;
 }
-
 .whatsapp-float:hover{
   transform:scale(1.08);
   box-shadow:0 0 28px rgba(37,211,102,.6);
+}
+
+/* ===== FOOTER LEFT ===== */
+.footer-left{
+  position:fixed;
+  left:18px;
+  bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:11px;
+  letter-spacing:1px;
+  opacity:.65;
+  z-index:999;
+}
+.footer-left img{
+  width:64px;
+  height:auto;
+  opacity:1;
 }
 
 /* ===== MOBILE ===== */
@@ -211,55 +245,49 @@ h1{
 
   <div class="contact-box">
 
-    <!-- MAIN CTA -->
-<div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+    <div class="cta-row">
 
+      <!-- Envelope icon (shared) -->
+      <!-- SEND DEMO -->
+      <a class="main-btn"
+         href="mailto:lumatechrecord@gmail.com?subject=Demo%20Submission&body=Hi%20LumaTech%20Music%2C%0A%0AMy%20artist%20name%3A%0ALink%20to%20private%20demo%20(SoundCloud%2FDrive)%3A%0A%0AGenre%3A%20Melodic%20Techno%0A%0AThanks%21">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M2 5.5A3.5 3.5 0 0 1 5.5 2h13A3.5 3.5 0 0 1 22 5.5v13A3.5 3.5 0 0 1 18.5 22h-13A3.5 3.5 0 0 1 2 18.5v-13Zm3.2-.5 6.8 5.1L18.8 5H5.2Zm14.8 2.2-7.6 5.7a1 1 0 0 1-1.2 0L3.6 7.2V18.5A1.5 1.5 0 0 0 5.1 20h13.8a1.5 1.5 0 0 0 1.5-1.5V7.2Z"/>
+        </svg>
+        <span>SEND DEMO</span>
+      </a>
 
+      <!-- BOOKING -->
+      <a class="main-btn"
+         href="mailto:lumatechrecord@gmail.com?subject=Booking%20Request&body=Hi%20LumaTech%20Music%2C%0A%0AArtist%20name%3A%0AEvent%2FClub%3A%0ADate%3A%0ACountry%2FCity%3A%0A%0AThanks%21">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M2 5.5A3.5 3.5 0 0 1 5.5 2h13A3.5 3.5 0 0 1 22 5.5v13A3.5 3.5 0 0 1 18.5 22h-13A3.5 3.5 0 0 1 2 18.5v-13Zm3.2-.5 6.8 5.1L18.8 5H5.2Zm14.8 2.2-7.6 5.7a1 1 0 0 1-1.2 0L3.6 7.2V18.5A1.5 1.5 0 0 0 5.1 20h13.8a1.5 1.5 0 0 0 1.5-1.5V7.2Z"/>
+        </svg>
+        <span>BOOKING</span>
+      </a>
 
-  <!-- SEND DEMO -->
-  <a class="main-btn" href="mailto:lumatechrecord@gmail.com?subject=Demo%20Submission&body=Hi%20LumaTech%20Music%2C%0A%0AMy%20artist%20name%3A%0ALink%20to%20private%20demo%20(SoundCloud%2FDrive)%3A%0A%0AGenre%3A%20Melodic%20Techno%0A%0AThanks%21">
+    </div>
 
-    <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:currentColor;">
-      <path d="M2 5.5A3.5 3.5 0 0 1 5.5 2h13A3.5 3.5 0 0 1 22 5.5v13A3.5 3.5 0 0 1 18.5 22h-13A3.5 3.5 0 0 1 2 18.5v-13Zm3.2-.5 6.8 5.1L18.8 5H5.2Zm14.8 2.2-7.6 5.7a1 1 0 0 1-1.2 0L3.6 7.2V18.5A1.5 1.5 0 0 0 5.1 20h13.8a1.5 1.5 0 0 0 1.5-1.5V7.2Z"/>
-    </svg>
+    <div class="info-line">
+      Follow us on social media to stay up to date with the latest news
+    </div>
 
-    <span>SEND DEMO</span>
-  </a>
-
-  <!-- BOOKING -->
-  <a class="main-btn" href="mailto:lumatechrecord@gmail.com?subject=Booking%20Request&body=Hi%20LumaTech%20Music%2C%0A%0AArtist%20name%3A%0AEvent%2FClub%3A%0ADate%3A%0ACountry%2FCity%3A%0A%0AThanks%21">
-
-    <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:currentColor;">
-      <path d="M2 5.5A3.5 3.5 0 0 1 5.5 2h13A3.5 3.5 0 0 1 22 5.5v13A3.5 3.5 0 0 1 18.5 22h-13A3.5 3.5 0 0 1 2 18.5v-13Zm3.2-.5 6.8 5.1L18.8 5H5.2Zm14.8 2.2-7.6 5.7a1 1 0 0 1-1.2 0L3.6 7.2V18.5A1.5 1.5 0 0 0 5.1 20h13.8a1.5 1.5 0 0 0 1.5-1.5V7.2Z"/>
-    </svg>
-
-    <span>BOOKING</span>
-  </a>
-
-</div>
-
-      <div style="
-  margin-top:20px;
-  font-size:12px;
-  letter-spacing:2px;
-  opacity:.8;
-">
-  Follow us on social media to stay up to date with the latest news
-</div>
-
-    <!-- SOCIALS -->
     <div class="socials">
 
       <!-- Instagram -->
-      <a class="social-btn" href="https://www.instagram.com/lumatech_music?igsh=mtfoohbhdnpndzuxyw==" target="_blank" rel="noopener">
+      <a class="social-btn"
+         href="https://www.instagram.com/lumatech_music?igsh=mtfoohbhdnpndzuxyw=="
+         target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9A3.5 3.5 0 0 0 20 16.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm4.5 4.5A5.5 5.5 0 1 1 6.5 14 5.5 5.5 0 0 1 12 8.5Zm0 2A3.5 3.5 0 1 0 15.5 14 3.5 3.5 0 0 0 12 10.5ZM18 6.7a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"/>
+          <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9A3.5 3.5 0 0 0 20 16.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM12 8.5A5.5 5.5 0 1 1 6.5 14 5.5 5.5 0 0 1 12 8.5Zm0 2A3.5 3.5 0 1 0 15.5 14 3.5 3.5 0 0 0 12 10.5ZM18 6.7a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"/>
         </svg>
         <span>INSTAGRAM</span>
       </a>
 
       <!-- Facebook -->
-      <a class="social-btn" href="https://www.facebook.com/people/LumaTech-Music/61586012272654/" target="_blank" rel="noopener">
+      <a class="social-btn"
+         href="https://www.facebook.com/people/LumaTech-Music/61586012272654/"
+         target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M13.5 22v-8h2.7l.4-3H13.5V9.2c0-.9.3-1.6 1.7-1.6h1.5V5a20 20 0 0 0-2.2-.1c-2.2 0-3.7 1.3-3.7 3.8V11H8.3v3h2.5v8h2.7Z"/>
         </svg>
@@ -267,7 +295,9 @@ h1{
       </a>
 
       <!-- TikTok -->
-      <a class="social-btn" href="https://www.tiktok.com/@lumatech6?_r=1&_t=zs-92rojnekh9n" target="_blank" rel="noopener">
+      <a class="social-btn"
+         href="https://www.tiktok.com/@lumatech6?_r=1&_t=zs-92rojnekh9n"
+         target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M16.6 3c.3 2.4 1.9 4.3 4.4 4.6v3.1c-1.8.1-3.5-.5-4.9-1.6v6.8c0 3.7-3 6.1-6.3 6.1-3.1 0-5.8-2.3-5.8-5.6 0-3.6 2.8-5.9 6.4-5.9.4 0 .8 0 1.2.1v3.4c-.4-.1-.7-.2-1.1-.2-1.7 0-3.1 1.1-3.1 2.7 0 1.5 1.2 2.6 2.7 2.6 1.8 0 3-1.1 3-3.3V3h3.5Z"/>
         </svg>
@@ -280,40 +310,23 @@ h1{
   <div class="back">
     <a href="home.html">BACK</a>
   </div>
+
+</div>
+
+<!-- FOOTER LEFT -->
+<div class="footer-left">
+  <img src="logo white.png" alt="Lumatech Logo">
+  <span>All Rights Reserved. Lumatech Music © 2026</span>
 </div>
 
 <!-- FLOATING WHATSAPP -->
 <a href="https://chat.whatsapp.com/Hw4geis1c3pENPVwpwmjKh"
    target="_blank"
-   class="whatsapp-float">
-   <img src="whatsapp.png" alt="WhatsApp">
-   <span>Join the Official LumaTech WhatsApp Updates Group</span>
+   class="whatsapp-float"
+   title="Join the Official LumaTech WhatsApp Updates Group">
+  <img src="whatsapp.png" alt="WhatsApp">
+  <span>Join the Official LumaTech WhatsApp Updates Group</span>
 </a>
-
-  /* ===== FOOTER LEFT ===== */
-.footer-left{
-  position:fixed;
-  left:18px;
-  bottom:14px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-size:11px;
-  letter-spacing:1px;
-  opacity:.65;
-  z-index:999;
-}
-
-.footer-left img{
-  width:64px;
-  height:auto;
-  opacity:1;
-}
-
-  <div class="footer-left">
-  <img src="logo white.png" alt="Lumatech Logo">
-  <span>All Rights Reserved. Lumatech Music © 2026</span>
-</div>
 
 </body>
 </html>
