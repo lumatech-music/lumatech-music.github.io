@@ -14,9 +14,7 @@ html, body{
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.player{
-  margin-top:14px;
-}
+.player{ margin-top:14px; }
 
 audio{
   width:100%;
@@ -82,16 +80,18 @@ h1{
   padding:16px;
   border-radius:16px;
   text-align:left;
+  position:relative;          /* ✅ בשביל החצים */
+  overflow:hidden;            /* ✅ שהכל יישאר בתוך הקוביה */
 }
 
 /* ===== Cover ===== */
 .cover{
   width:100%;
-  max-width:220px;      /* ⬅️ כאן הגודל (אפשר 180–260) */
+  max-width:220px;
   aspect-ratio:1/1;
   object-fit:cover;
   border-radius:14px;
-  margin:0 auto 14px;   /* ממורכז */
+  margin:0 auto 14px;
   display:block;
 }
 
@@ -135,9 +135,7 @@ h1{
 }
 
 /* ===== Back Button ===== */
-.back{
-  margin-top:40px;
-}
+.back{ margin-top:40px; }
 
 .back a{
   padding:12px 28px;
@@ -161,12 +159,51 @@ h1{
   transform: translateY(14px);
   animation: fadeIn 1.4s ease-out forwards;
 }
-
 @keyframes fadeIn{
-  to{
-    opacity:1;
-    transform: translateY(0);
-  }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+/* ✅ ===== SLIDER BUTTONS INSIDE CARD ===== */
+.slider-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(0,0,0,.35);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:50;
+  transition:.2s ease;
+  user-select:none;
+}
+
+.slider-btn:hover{
+  transform:translateY(-50%) scale(1.06);
+  background:rgba(255,255,255,.14);
+}
+
+.slider-btn:disabled{
+  opacity:.35;
+  cursor:default;
+}
+.slider-btn:disabled:hover{
+  transform:translateY(-50%);
+  background:rgba(0,0,0,.35);
+}
+
+.slider-prev{ left:12px; }
+.slider-next{ right:12px; }
+
+.slider-btn svg{
+  width:18px;
+  height:18px;
+  fill:currentColor;
 }
 
 /* ===== WHATSAPP FLOAT BUTTON ===== */
@@ -187,10 +224,7 @@ h1{
   transition:.25s ease;
 }
 
-.whatsapp-float img{
-  width:22px;
-  height:auto;
-}
+.whatsapp-float img{ width:22px; height:auto; }
 
 .whatsapp-float span{
   color:#fff;
@@ -230,11 +264,10 @@ h1{
   h1{ font-size:34px; letter-spacing:6px; }
   .whatsapp-float span{ display:none; }
 }
-  
-/* ===== Mobile ===== */
 @media (max-width:480px){
   h1{font-size:34px;letter-spacing:6px}
-  .whatsapp-float span{ display:none; } /* במובייל רק האייקון */
+  .whatsapp-float span{ display:none; }
+  .slider-btn{ width:38px; height:38px; } /* ✅ קצת קטן במובייל */
 }
 </style>
 </head>
@@ -250,25 +283,40 @@ h1{
 
   <div class="grid">
 
-    <!-- RELEASE CARD -->
-    <div class="card">
-      <img src="LUM001.png" class="cover" alt="LUM001 Cover">
+    <!-- ✅ RELEASE SLIDER CARD (same cube, now dynamic) -->
+    <div class="card" id="releaseCard">
 
-      <div class="meta">CATALOG: LUM001</div>
-      <div class="title">Don Juan – Out Of My Mind</div>
-      <div class="meta">Release Date: Coming Soon...</div>
+      <!-- arrows inside the cube -->
+      <button class="slider-btn slider-prev" id="prevBtn" aria-label="Previous release">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M15.5 19 8.5 12l7-7 1.5 1.5L11.5 12l5.5 5.5z"/>
+        </svg>
+      </button>
+
+      <button class="slider-btn slider-next" id="nextBtn" aria-label="Next release">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8.5 5 15.5 12l-7 7-1.5-1.5L12.5 12 7 6.5z"/>
+        </svg>
+      </button>
+
+      <img id="coverImg" src="LUM001.png" class="cover" alt="LUM001 Cover">
+
+      <div class="meta" id="catalogText">CATALOG: LUM001</div>
+      <div class="title" id="titleText">Don Juan – Out Of My Mind</div>
+      <div class="meta" id="dateText">Release Date: Coming Soon...</div>
 
       <div class="player">
-        <audio controls preload="none" controlsList="nodownload noplaybackrate">
-          <source src="demo-lum001.mp3" type="audio/mpeg">
+        <audio id="audioPlayer" controls preload="none" controlsList="nodownload noplaybackrate">
+          <source id="audioSource" src="demo-lum001.mp3" type="audio/mpeg">
         </audio>
       </div>
 
       <div class="links">
-        <a href="#" target="_blank">Spotify</a>
-        <a href="#" target="_blank">Beatport</a>
-        <a href="#" target="_blank">SoundCloud</a>
+        <a id="spotifyLink" href="#" target="_blank" rel="noopener">Spotify</a>
+        <a id="beatportLink" href="#" target="_blank" rel="noopener">Beatport</a>
+        <a id="soundcloudLink" href="#" target="_blank" rel="noopener">SoundCloud</a>
       </div>
+
     </div>
 
   </div>
@@ -284,7 +332,6 @@ h1{
   <img src="logo white.png" alt="Lumatech Logo">
   <span>All Rights Reserved. Lumatech Music © 2026</span>
 </div>
-  
 
 <!-- ✅ FLOATING WHATSAPP -->
 <a href="https://chat.whatsapp.com/Hw4geis1c3pENPVwpwmjKh"
@@ -294,6 +341,86 @@ h1{
    <img src="whatsapp.png" alt="WhatsApp">
    <span>Join the Official LumaTech WhatsApp Updates Group</span>
 </a>
+
+<script>
+/* ✅ הוסף פה ריליסים (החצים יחליפו ביניהם) */
+const releases = [
+  {
+    catalog: "LUM001",
+    title: "Don Juan – Out Of My Mind",
+    date: "Coming Soon...",
+    cover: "LUM001.png",
+    demo: "demo-lum001.mp3",
+    links: { spotify:"#", beatport:"#", soundcloud:"#" }
+  },
+
+  /* דוגמה לריליס שני – תעדכן שמות קבצים/לינקים אמיתיים */
+  // {
+  //   catalog: "LUM002",
+  //   title: "Don Juan – Driving Me Insane",
+  //   date: "Coming Soon...",
+  //   cover: "LUM002.png",
+  //   demo: "demo-lum002.mp3",
+  //   links: { spotify:"#", beatport:"#", soundcloud:"#" }
+  // }
+];
+
+let idx = 0;
+
+const coverImg = document.getElementById("coverImg");
+const catalogText = document.getElementById("catalogText");
+const titleText = document.getElementById("titleText");
+const dateText = document.getElementById("dateText");
+
+const spotifyLink = document.getElementById("spotifyLink");
+const beatportLink = document.getElementById("beatportLink");
+const soundcloudLink = document.getElementById("soundcloudLink");
+
+const audioPlayer = document.getElementById("audioPlayer");
+const audioSource = document.getElementById("audioSource");
+
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+function renderRelease(){
+  const r = releases[idx];
+
+  coverImg.src = r.cover;
+  coverImg.alt = r.catalog + " Cover";
+
+  catalogText.textContent = "CATALOG: " + r.catalog;
+  titleText.textContent = r.title;
+  dateText.textContent = "Release Date: " + r.date;
+
+  spotifyLink.href = (r.links && r.links.spotify) ? r.links.spotify : "#";
+  beatportLink.href = (r.links && r.links.beatport) ? r.links.beatport : "#";
+  soundcloudLink.href = (r.links && r.links.soundcloud) ? r.links.soundcloud : "#";
+
+  // Update audio safely
+  audioPlayer.pause();
+  audioSource.src = r.demo || "";
+  audioPlayer.load();
+
+  // אם יש רק ריליס אחד – החצים יהיו disabled
+  const onlyOne = releases.length <= 1;
+  prevBtn.disabled = onlyOne;
+  nextBtn.disabled = onlyOne;
+}
+
+prevBtn.addEventListener("click", () => {
+  if (releases.length <= 1) return;
+  idx = (idx - 1 + releases.length) % releases.length;
+  renderRelease();
+});
+
+nextBtn.addEventListener("click", () => {
+  if (releases.length <= 1) return;
+  idx = (idx + 1) % releases.length;
+  renderRelease();
+});
+
+renderRelease();
+</script>
 
 </body>
 </html>
