@@ -81,7 +81,7 @@ h1{
   border-radius:16px;
   text-align:left;
   position:relative;
-  overflow:hidden; /* ✅ כדי שהסלייד לא ייצא מהקובייה */
+  overflow:hidden;
 }
 
 /* ===== Cover ===== */
@@ -212,26 +212,11 @@ h1{
   will-change: transform, opacity;
 }
 
-.slide-out-left{
-  transform: translateX(-55%);
-  opacity: 0;
-}
-.slide-out-right{
-  transform: translateX(55%);
-  opacity: 0;
-}
-.slide-in-left{
-  transform: translateX(-55%);
-  opacity: 0;
-}
-.slide-in-right{
-  transform: translateX(55%);
-  opacity: 0;
-}
-.slide-center{
-  transform: translateX(0);
-  opacity: 1;
-}
+.slide-out-left{  transform: translateX(-55%); opacity: 0; }
+.slide-out-right{ transform: translateX(55%);  opacity: 0; }
+.slide-in-left{   transform: translateX(-55%); opacity: 0; }
+.slide-in-right{  transform: translateX(55%);  opacity: 0; }
+.slide-center{    transform: translateX(0);    opacity: 1; }
 
 /* ===== WHATSAPP FLOAT BUTTON ===== */
 .whatsapp-float{
@@ -324,7 +309,6 @@ h1{
         </svg>
       </button>
 
-      <!-- ✅ viewport that slides -->
       <div id="releaseViewport" class="slide-center">
 
         <img id="coverImg" src="LUM001.png" class="cover" alt="LUM001 Cover">
@@ -410,6 +394,11 @@ const audioSource = document.getElementById("audioSource");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 
+function updateArrowState(){
+  prevBtn.disabled = (idx === 0);
+  nextBtn.disabled = (idx === releases.length - 1);
+}
+
 function setReleaseContent(r){
   coverImg.src = r.cover;
   coverImg.alt = r.catalog + " Cover";
@@ -432,7 +421,6 @@ function animateTo(newIndex, dir){
 
   isAnimating = true;
 
-  // slide out current
   viewport.classList.remove("slide-center","slide-in-left","slide-in-right");
   viewport.classList.add(dir === "next" ? "slide-out-left" : "slide-out-right");
 
@@ -440,41 +428,42 @@ function animateTo(newIndex, dir){
     idx = newIndex;
     setReleaseContent(releases[idx]);
 
-    // prepare to slide in
     viewport.classList.remove("slide-out-left","slide-out-right");
     viewport.classList.add(dir === "next" ? "slide-in-right" : "slide-in-left");
 
-    // force reflow
     void viewport.offsetWidth;
 
-    // slide to center
     viewport.classList.remove("slide-in-left","slide-in-right");
     viewport.classList.add("slide-center");
 
     setTimeout(() => {
       isAnimating = false;
+      updateArrowState(); // ✅ עצירה בקצוות
     }, 480);
 
   }, 300);
 }
 
 prevBtn.addEventListener("click", () => {
-  const newIndex = (idx - 1 + releases.length) % releases.length;
-  animateTo(newIndex, "prev");
+  if (idx === 0) return;
+  animateTo(idx - 1, "prev");
 });
 
 nextBtn.addEventListener("click", () => {
-  const newIndex = (idx + 1) % releases.length;
-  animateTo(newIndex, "next");
+  if (idx === releases.length - 1) return;
+  animateTo(idx + 1, "next");
 });
 
 // init
 setReleaseContent(releases[idx]);
 
-// disable if only one
-const onlyOne = releases.length <= 1;
-prevBtn.disabled = onlyOne;
-nextBtn.disabled = onlyOne;
+// init arrows
+if (releases.length <= 1){
+  prevBtn.disabled = true;
+  nextBtn.disabled = true;
+} else {
+  updateArrowState();
+}
 </script>
 
 </body>
