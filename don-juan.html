@@ -176,6 +176,31 @@
     @media (max-width: 600px){
       .whatsapp-float span{ display:none; }
     }
+
+    /* ===== FOOTER LEFT ===== */
+.footer-left{
+  position:fixed;
+  left:18px;
+  bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:11px;
+  letter-spacing:1px;
+  opacity:.65;
+  z-index:999;
+}
+.footer-left img{
+  width:64px;
+  height:auto;
+  opacity:1;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:600px){
+  h1{ font-size:34px; letter-spacing:6px; }
+  .whatsapp-float span{ display:none; }
+}
   </style>
 </head>
 
@@ -243,6 +268,12 @@
   <div class="back-fixed">
     <a class="btn-link" href="artists.html">BACK</a>
   </div>
+
+<!-- FOOTER LEFT -->
+<div class="footer-left">
+  <img src="logo white.png" alt="Lumatech Logo">
+  <span>All Rights Reserved. Lumatech Music © 2026</span>
+</div>
 
   <!-- FLOATING WHATSAPP -->
   <a href="https://chat.whatsapp.com/Hw4geis1c3pENPVwpwmjKh"
