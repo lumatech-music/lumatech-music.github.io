@@ -6,6 +6,8 @@
   <title>DON JUAN | LumaTech Music</title>
 
   <style>
+    *{ box-sizing:border-box; }
+
     html, body{
       margin:0;
       height:100%;
@@ -32,7 +34,6 @@
       align-items:center;
       justify-content:center;
       padding:60px 22px 140px; /* מקום לכפתור BACK */
-      box-sizing:border-box;
       text-align:center;
     }
 
@@ -132,12 +133,52 @@
       color:#000;
     }
 
+    /* ===== WHATSAPP FLOAT BUTTON ===== */
+    .whatsapp-float{
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      background:rgba(0,0,0,.6);
+      backdrop-filter: blur(6px);
+      padding:12px 18px;
+      border-radius:40px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      box-shadow:0 0 20px rgba(0,0,0,.6);
+      z-index:1000;
+      transition:.25s ease;
+    }
+
+    .whatsapp-float img{
+      width:22px;
+      height:auto;
+    }
+
+    .whatsapp-float span{
+      color:#fff;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:1px;
+      line-height:1.2;
+      white-space:nowrap;
+    }
+
+    .whatsapp-float:hover{
+      transform:scale(1.08);
+      box-shadow:0 0 28px rgba(37,211,102,.6);
+    }
+
     @keyframes fadeIn{ to{opacity:1;} }
     @keyframes fadeUp{ to{opacity:1; transform:translateY(0);} }
 
     @media (max-width: 800px){
       .name{ font-size:44px; letter-spacing:6px; }
       .avatar{ width:200px; height:200px; }
+    }
+    @media (max-width: 600px){
+      .whatsapp-float span{ display:none; } /* במובייל רק האייקון */
     }
   </style>
 </head>
@@ -175,41 +216,4 @@
            target="_blank" rel="noopener"
            aria-label="Instagram">
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9A3.5 3.5 0 0 0 20 16.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm4.5 4.5A5.5 5.5 0 1 1 6.5 14 5.5 5.5 0 0 1 12 8.5Zm0 2A3.5 3.5 0 1 0 15.5 14 3.5 3.5 0 0 0 12 10.5ZM18 6.7a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"/>
-          </svg>
-          <span>INSTAGRAM</span>
-        </a>
-
-        <!-- SoundCloud (לינק מתוקן + לוגו ענן/גלים) -->
-        <a class="social-btn"
-           href="https://soundcloud.com/don-juan-125741347"
-           target="_blank" rel="noopener"
-           aria-label="SoundCloud">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M17.5 10.3a5.2 5.2 0 0 0-10.3 1.2v.3a3.4 3.4 0 0 0 .3 6.8h9.1a2.9 2.9 0 0 0 .6-5.7ZM6 11.5h1v7H6v-7Zm-2 .9h1v6.1H4v-6.1Zm4-.6h1v6.7H8v-6.7Zm2-.8h1v7.5h-1V11Zm2 .6h1v6.9h-1v-6.9Z"/>
-          </svg>
-          <span>SOUNDCLOUD</span>
-        </a>
-
-        <!-- Facebook -->
-        <a class="social-btn"
-           href="https://www.facebook.com/DonJuanMusic1/"
-           target="_blank" rel="noopener"
-           aria-label="Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M13.5 22v-8h2.7l.4-3H13.5V9.2c0-.9.3-1.6 1.7-1.6h1.5V5a20 20 0 0 0-2.2-.1c-2.2 0-3.7 1.3-3.7 3.8V11H8.3v3h2.5v8h2.7Z"/>
-          </svg>
-          <span>FACEBOOK</span>
-        </a>
-
-      </div>
-
-    </section>
-  </main>
-
-  <div class="back-fixed">
-    <a class="btn-link" href="artists.html">BACK</a>
-  </div>
-
-</body>
-</html>
+            <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.
