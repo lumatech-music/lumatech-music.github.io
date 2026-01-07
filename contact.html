@@ -1,224 +1,206 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LumaTech – Contact</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LumaTech | Contact</title>
 
-  <style>
-    html, body{
-      margin:0;
-      height:100%;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+<style>
+/* ===== בסיס ===== */
+*{ box-sizing:border-box; }
+html, body{
+  margin:0;
+  height:100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-    body{
-      background:
-        linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7)),
-        url("background.png");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color:#fff;
-    }
+/* ===== רקע (זהה ל־home) ===== */
+body{
+  background:
+    linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7)),
+    url("background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
 
-    /* פריסה כללית */
-    .page{
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      padding:60px 20px 120px; /* מקום ל-BACK הקבוע */
-      animation: fadeIn 1.2s ease-out forwards;
-      opacity:0;
-      transform: translateY(12px);
-    }
+/* ===== קונטיינר ===== */
+.container{
+  padding:40px 20px;
+  width:100%;
+  max-width:900px;
+}
 
-    .wrap{
-      width:min(1100px, 100%);
-      margin:0 auto;
-      display:flex;
-      flex-direction:column;
-      gap:40px;
-    }
+/* ===== כותרות ===== */
+h1{
+  margin:0;
+  font-size:42px;
+  letter-spacing:8px;
+}
 
-    /* כותרת */
-    .title{
-      text-align:center;
-      font-size:48px;
-      letter-spacing:8px;
-      margin:0;
-    }
+.tag{
+  margin-top:12px;
+  font-size:12px;
+  letter-spacing:4px;
+  opacity:.75;
+}
 
-    /* כפתורים עליונים */
-    .buttons-row{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:20px;
-    }
+/* ===== Divider ===== */
+.divider{
+  width:70px;
+  height:1px;
+  background:rgba(255,255,255,.6);
+  margin:30px auto 40px;
+}
 
-    /* כפתור סטייל */
-    .btn-link{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:14px 28px;
-      background:rgba(255,255,255,.12);
-      color:#fff;
-      text-decoration:none;
-      letter-spacing:4px;
-      font-size:12px;
-      font-weight:700;
-      transition:.25s;
-      white-space:nowrap;
-    }
+/* ===== Contact Box ===== */
+.contact-box{
+  background:rgba(0,0,0,.25);
+  padding:28px 22px;
+  border-radius:18px;
+  max-width:520px;
+  margin:0 auto;
+}
 
-    .btn-link:hover{
-      background:#fff;
-      color:#000;
-    }
+.contact-line{
+  margin:14px 0;
+  font-size:13px;
+  letter-spacing:2px;
+  opacity:.9;
+}
 
-    /* גדולים רק למעלה */
-    .hero{
-      font-size:16px;
-      padding:22px 48px;
-      letter-spacing:5px;
-    }
+.contact-line a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+}
 
-    /* אזור אמצעי - ממורכז באמת באמצע העמוד */
-    .middle{
-      flex:1;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:10px 0;
-    }
+.contact-line a:hover{
+  text-decoration:underline;
+}
 
-    .social{
-      max-width: 980px;
-    }
+/* ===== Back Button ===== */
+.back{
+  margin-top:40px;
+}
 
-    .social-text{
-      margin:0 0 26px;
-      font-size:13px;
-      letter-spacing:3px;
-      opacity:.85;
-      line-height:1.6;
-    }
+.back a{
+  padding:12px 28px;
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  text-decoration:none;
+  letter-spacing:4px;
+  font-size:12px;
+  font-weight:700;
+  transition:.25s;
+}
 
-    .social-buttons{
-      display:flex;
-      justify-content:center;
-      gap:14px;
-      flex-wrap:wrap;
-    }
+.back a:hover{
+  background:#fff;
+  color:#000;
+}
 
-    /* אייקונים */
-    .btn-link svg{
-      width:16px;
-      height:16px;
-      display:block;
-      fill: currentColor; /* צבע כמו הטקסט */
-      transition:.25s;
-    }
+/* ===== Fade In ===== */
+.fade{
+  opacity:0;
+  transform: translateY(14px);
+  animation: fadeIn 1.4s ease-out forwards;
+}
 
-    /* BACK קבוע למטה במרכז */
-    .back-fixed{
-      position:fixed;
-      left:50%;
-      bottom:30px;
-      transform:translateX(-50%);
-    }
+@keyframes fadeIn{
+  to{
+    opacity:1;
+    transform: translateY(0);
+  }
+}
 
-    /* רספונסיביות */
-    @media (max-width: 700px){
-      .buttons-row{
-        flex-direction:column;
-        gap:22px;
-      }
-    }
+/* ===== WHATSAPP FLOAT BUTTON ===== */
+.whatsapp-float{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  background:rgba(0,0,0,.6);
+  backdrop-filter: blur(6px);
+  padding:12px 18px;
+  border-radius:40px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  box-shadow:0 0 20px rgba(0,0,0,.6);
+  z-index:1000;
+  transition:.25s ease;
+}
 
-    @keyframes fadeIn{
-      to{ opacity:1; transform: translateY(0); }
-    }
-  </style>
+.whatsapp-float img{
+  width:22px;
+}
+
+.whatsapp-float span{
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1px;
+  white-space:nowrap;
+}
+
+.whatsapp-float:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 28px rgba(37,211,102,.6);
+}
+
+/* ===== Mobile ===== */
+@media (max-width:480px){
+  h1{font-size:34px;letter-spacing:6px}
+  .whatsapp-float span{ display:none; }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="page">
-    <div class="wrap">
+<div class="container fade">
 
-      <h1 class="title">CONTACT</h1>
+  <h1>CONTACT</h1>
+  <div class="tag">GET IN TOUCH WITH LUMATECH</div>
 
-      <div class="buttons-row">
-        <a class="btn-link hero" href="mailto:LumaTechrecord@gmail.com">
-          SEND YOUR DEMO
-        </a>
+  <div class="divider"></div>
 
-        <a class="btn-link hero" href="mailto:LumaTechrecord@gmail.com">
-          BOOKING
-        </a>
-      </div>
+  <div class="contact-box">
+    <div class="contact-line">📩 Demo Submissions:</div>
+    <div class="contact-line">
+      <a href="mailto:lumatechmusic@gmail.com">lumatechmusic@gmail.com</a>
+    </div>
 
-      <!-- אמצע העמוד -->
-      <div class="middle">
-        <div class="social">
-          <p class="social-text">
-            Follow us on social media to stay up to date with the latest news
-          </p>
+    <div class="contact-line" style="margin-top:22px;">🌐 Social:</div>
+    <div class="contact-line">
+      Instagram: <a href="#" target="_blank">@lumatechmusic</a>
+    </div>
 
-          <div class="social-buttons">
-            <!-- INSTAGRAM -->
-            <a class="btn-link"
-               href="https://www.instagram.com/lumatech_music?igsh=MTFoOHBhdnpndzUxYw=="
-               target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A4.5 4.5 0 1 0 16.5 12 4.51 4.51 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.81 2.81 0 0 1 12 14.8zM17.6 6.4a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1z"/>
-              </svg>
-              INSTAGRAM
-            </a>
-
-            <!-- FACEBOOK -->
-            <a class="btn-link"
-               href="https://www.facebook.com/profile.php?id=61586012272654"
-               target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2V9.5A3 3 0 0 1 13.7 6h2.3v3h-1.6c-.5 0-.7.3-.7.7V12h2.3l-.4 3h-1.9v7A10 10 0 0 0 22 12z"/>
-              </svg>
-              FACEBOOK
-            </a>
-
-            <!-- YOUTUBE (תעדכן לינק כשתהיה כתובת) -->
-            <a class="btn-link"
-               href="#"
-               target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.2 3.5z"/>
-              </svg>
-              YOUTUBE
-            </a>
-
-            <!-- TIKTOK (תעדכן לינק כשתהיה כתובת) -->
-            <a class="btn-link"
-               href="https://www.tiktok.com/@lumatech6?_r=1&_t=ZS-92oNQ0ZvqBl"
-               target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M21 8.2a6.6 6.6 0 0 1-4.2-1.5v7.1a5.4 5.4 0 1 1-4.6-5.3v2.9a2.6 2.6 0 1 0 1.8 2.4V2h3a6.6 6.6 0 0 0 4 3.8z"/>
-              </svg>
-              TIKTOK
-            </a>
-          </div>
-        </div>
-      </div>
-
+    <div class="contact-line">
+      SoundCloud: <a href="#" target="_blank">LumaTech Music</a>
     </div>
   </div>
 
-  <div class="back-fixed">
-    <a class="btn-link" href="home.html">BACK</a>
+  <div class="back">
+    <a href="home.html">BACK</a>
   </div>
+
+</div>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://chat.whatsapp.com/Hw4geis1c3pENPVwpwmjKh"
+   target="_blank"
+   class="whatsapp-float"
+   title="Join the Official LUMATECH WhatsApp Updates Group">
+   <img src="whatsapp.png" alt="WhatsApp">
+   <span>Join the Official LumaTech WhatsApp Updates Group</span>
+</a>
 
 </body>
 </html>
