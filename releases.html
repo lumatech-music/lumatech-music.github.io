@@ -102,6 +102,20 @@ h1{
   opacity:.75;
 }
 
+/* FREE badge */
+.badge{
+  display:inline-block;
+  margin-top:10px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.10);
+  font-size:10px;
+  letter-spacing:3px;
+  font-weight:700;
+  text-transform:uppercase;
+}
+
 /* ===== Title ===== */
 .title{
   margin:6px 0 10px;
@@ -130,6 +144,17 @@ h1{
 }
 
 .links a:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* FREE DOWNLOAD button highlight */
+.links a.free{
+  border:1px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.18);
+  font-weight:700;
+}
+.links a.free:hover{
   background:#fff;
   color:#000;
 }
@@ -317,7 +342,10 @@ h1{
         <div class="title" id="titleText">Don Juan – Out Of My Mind</div>
         <div class="meta" id="dateText">Release Date: 19/01/2026</div>
 
-        <div class="player">
+        <!-- FREE badge (hidden by default) -->
+        <div class="badge" id="freeBadge" style="display:none;">FREE RELEASE</div>
+
+        <div class="player" id="playerWrap">
           <audio id="audioPlayer" controls preload="none" controlsList="nodownload noplaybackrate">
             <source id="audioSource" src="demo-lum001.mp3" type="audio/mpeg">
           </audio>
@@ -327,6 +355,7 @@ h1{
           <a id="spotifyLink" href="#" target="_blank" rel="noopener">Spotify</a>
           <a id="beatportLink" href="#" target="_blank" rel="noopener">Beatport</a>
           <a id="soundcloudLink" href="#" target="_blank" rel="noopener">SoundCloud</a>
+          <a id="freeLink" class="free" href="#" target="_blank" rel="noopener" style="display:none;">FREE DOWNLOAD</a>
         </div>
 
       </div>
@@ -362,7 +391,8 @@ const releases = [
     date: "19/01/2026",
     cover: "LUM001.png",
     demo: "demo-lum001.mp3",
-    links: { spotify:"#", beatport:"#", soundcloud:"#" }
+    free: false,
+    links: { spotify:"#", beatport:"#", soundcloud:"#", free:"" }
   },
   {
     catalog: "LUM002",
@@ -370,7 +400,22 @@ const releases = [
     date: "23/02/2026",
     cover: "LUM002.png",
     demo: "demo-lum002.mp3",
-    links: { spotify:"#", beatport:"#", soundcloud:"#" }
+    free: false,
+    links: { spotify:"#", beatport:"#", soundcloud:"#", free:"" }
+  },
+  {
+    catalog: "LUMF001",
+    title: "Don Juan – HEART",
+    date: "N/N",
+    cover: "LUMF003.png",
+    demo: "demo-lum003.mp3",
+    free: true,
+    links: {
+      spotify: "#",
+      beatport: "#",
+      soundcloud: "#",
+      free: "PASTE_YOUR_FREE_DOWNLOAD_LINK_HERE"
+    }
   }
 ];
 
@@ -384,12 +429,16 @@ const catalogText = document.getElementById("catalogText");
 const titleText = document.getElementById("titleText");
 const dateText = document.getElementById("dateText");
 
+const freeBadge = document.getElementById("freeBadge");
+const freeLink = document.getElementById("freeLink");
+
 const spotifyLink = document.getElementById("spotifyLink");
 const beatportLink = document.getElementById("beatportLink");
 const soundcloudLink = document.getElementById("soundcloudLink");
 
 const audioPlayer = document.getElementById("audioPlayer");
 const audioSource = document.getElementById("audioSource");
+const playerWrap = document.getElementById("playerWrap");
 
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
@@ -410,9 +459,27 @@ function setReleaseContent(r){
   beatportLink.href = r.links?.beatport || "#";
   soundcloudLink.href = r.links?.soundcloud || "#";
 
-  audioPlayer.pause();
-  audioSource.src = r.demo || "";
-  audioPlayer.load();
+  // FREE badge + FREE DOWNLOAD button
+  const isFree = !!r.free;
+  freeBadge.style.display = isFree ? "inline-block" : "none";
+
+  const dl = r.links?.free || "";
+  freeLink.href = dl || "#";
+  freeLink.style.display = (isFree && dl) ? "inline-block" : "none";
+
+  // audio (hide player if no demo)
+  const hasDemo = !!r.demo;
+  if (!hasDemo){
+    playerWrap.style.display = "none";
+    audioPlayer.pause();
+    audioSource.src = "";
+    audioPlayer.load();
+  } else {
+    playerWrap.style.display = "block";
+    audioPlayer.pause();
+    audioSource.src = r.demo;
+    audioPlayer.load();
+  }
 }
 
 function animateTo(newIndex, dir){
@@ -438,7 +505,7 @@ function animateTo(newIndex, dir){
 
     setTimeout(() => {
       isAnimating = false;
-      updateArrowState(); // ✅ עצירה בקצוות
+      updateArrowState();
     }, 480);
 
   }, 300);
