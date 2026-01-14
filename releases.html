@@ -342,7 +342,6 @@ h1{
         <div class="title" id="titleText">Don Juan – Out Of My Mind</div>
         <div class="meta" id="dateText">Release Date: 19/01/2026</div>
 
-        <!-- FREE badge (hidden by default) -->
         <div class="badge" id="freeBadge" style="display:none;">FREE RELEASE</div>
 
         <div class="player" id="playerWrap">
@@ -411,7 +410,7 @@ const releases = [
     demo: "demo-lum003.mp3",
     free: true,
     links: {
-      free: "http://lumatech-music.com/LumaTech-LUMF001-DonJuan-HEART-FreeDownload.zip"
+      free: "https://lumatech-music.com/downloads/LumaTech-LUMF001-DonJuan-HEART-FreeDownload.zip"
     }
   }
 ];
@@ -452,19 +451,25 @@ function setReleaseContent(r){
   titleText.textContent = r.title;
   dateText.textContent = "Release Date: " + r.date;
 
+  const isFree = !!r.free;
+
+  // set hrefs (for non-free releases)
   spotifyLink.href = r.links?.spotify || "#";
   beatportLink.href = r.links?.beatport || "#";
   soundcloudLink.href = r.links?.soundcloud || "#";
 
-  // FREE badge + FREE DOWNLOAD button
-  const isFree = !!r.free;
-  freeBadge.style.display = isFree ? "inline-block" : "none";
+  // ✅ hide streaming buttons on FREE release (HEART)
+  spotifyLink.style.display    = isFree ? "none" : "inline-block";
+  beatportLink.style.display   = isFree ? "none" : "inline-block";
+  soundcloudLink.style.display = isFree ? "none" : "inline-block";
 
+  // FREE badge + FREE DOWNLOAD
+  freeBadge.style.display = isFree ? "inline-block" : "none";
   const dl = r.links?.free || "";
   freeLink.href = dl || "#";
   freeLink.style.display = (isFree && dl) ? "inline-block" : "none";
 
-  // audio (hide player if no demo)
+  // audio
   const hasDemo = !!r.demo;
   if (!hasDemo){
     playerWrap.style.display = "none";
