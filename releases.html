@@ -389,7 +389,7 @@ audio{
       <button class="close-btn" id="closeBtn">CLOSE</button>
     </div>
 
-   <div id="viewport" class="modal-body slide-center">
+    <div id="viewport" class="modal-body slide-center">
       <div>
         <img id="coverImg" class="modal-cover" src="" alt="Cover">
 
@@ -488,10 +488,6 @@ const releases = [
   }
 ];
 
-buildGrid();
-</script>
-
-
 /* ===== Build Grid ===== */
 const grid = document.getElementById("grid");
 
@@ -559,23 +555,19 @@ function setReleaseContent(r){
 
   const isFree = !!r.free;
 
-  // set hrefs
   spotifyLink.href = r.links?.spotify || "#";
   beatportLink.href = r.links?.beatport || "#";
   soundcloudLink.href = r.links?.soundcloud || "#";
 
-  // hide streaming buttons on FREE
   spotifyLink.style.display    = isFree ? "none" : "inline-block";
   beatportLink.style.display   = isFree ? "none" : "inline-block";
   soundcloudLink.style.display = isFree ? "none" : "inline-block";
 
-  // FREE badge + FREE DOWNLOAD
   freeBadge.style.display = isFree ? "inline-block" : "none";
   const dl = r.links?.free || "";
   freeLink.href = dl || "#";
   freeLink.style.display = (isFree && dl) ? "inline-block" : "none";
 
-  // audio
   const hasDemo = !!r.demo;
   if (!hasDemo){
     playerWrap.style.display = "none";
@@ -644,12 +636,10 @@ nextBtn.addEventListener("click", () => {
 
 closeBtn.addEventListener("click", closeModal);
 
-// click outside closes
 modal.addEventListener("click", (e) => {
   if (e.target === modal) closeModal();
 });
 
-// keyboard navigation
 document.addEventListener("keydown", (e) => {
   if (!modal.classList.contains("open")) return;
   if (e.key === "Escape") closeModal();
