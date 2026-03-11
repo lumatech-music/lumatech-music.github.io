@@ -31,7 +31,7 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:40px 20px 90px;
+      padding:40px 20px 100px;
     }
 
     .artist-wrap{
@@ -40,24 +40,27 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:70px;
+      gap:80px;
       animation: fadeUp 1.2s ease forwards;
       opacity:0;
       transform:translateY(20px);
     }
 
     .artist-image{
-      flex:0 0 420px;
-      text-align:center;
+      flex:0 0 380px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
     }
 
     .artist-image img{
-      width:100%;
-      max-width:420px;
-      height:auto;
+      width:340px;
+      height:340px;
+      object-fit:cover;
+      border-radius:50%;
       display:block;
-      margin:0 auto;
       box-shadow:0 0 35px rgba(0,0,0,.35);
+      border:2px solid rgba(255,255,255,.08);
     }
 
     .artist-info{
@@ -80,7 +83,7 @@
     }
 
     .social-links{
-      margin-top:28px;
+      margin-top:30px;
       display:flex;
       flex-wrap:wrap;
       gap:14px;
@@ -152,7 +155,7 @@
       right:22px;
       bottom:22px;
       background:rgba(0,0,0,.6);
-      backdrop-filter: blur(6px);
+      backdrop-filter:blur(6px);
       padding:12px 18px;
       border-radius:40px;
       display:flex;
@@ -191,15 +194,28 @@
     }
 
     @media (max-width: 980px){
+      body{
+        overflow:auto;
+      }
+
+      .page{
+        padding:50px 20px 120px;
+      }
+
       .artist-wrap{
         flex-direction:column;
         text-align:center;
-        gap:30px;
+        gap:34px;
         max-width:720px;
       }
 
       .artist-image{
         flex:unset;
+      }
+
+      .artist-image img{
+        width:280px;
+        height:280px;
       }
 
       .artist-info h1{
@@ -224,7 +240,18 @@
       }
 
       .artist-image img{
-        max-width:280px;
+        width:220px;
+        height:220px;
+      }
+
+      .footer-left{
+        left:12px;
+        bottom:10px;
+        font-size:10px;
+      }
+
+      .footer-left img{
+        width:52px;
       }
 
       .whatsapp-float span{
@@ -284,8 +311,8 @@
      target="_blank"
      class="whatsapp-float"
      title="Join the Official LUMATECH WhatsApp Updates Group">
-     <img src="whatsapp.png" alt="WhatsApp">
-     <span>Join the Official LumaTech WhatsApp Updates Group</span>
+    <img src="whatsapp.png" alt="WhatsApp">
+    <span>Join the Official LumaTech WhatsApp Updates Group</span>
   </a>
 
 </body>
