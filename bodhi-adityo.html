@@ -1,232 +1,292 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>LumaTech – Bodhi Adityo</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BODHI ADITYO | LumaTech Music</title>
 
-<style>
+  <style>
+    *{ box-sizing:border-box; }
 
-*{box-sizing:border-box;}
+    html, body{
+      margin:0;
+      height:100%;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-html,body{
-margin:0;
-height:100%;
-font-family:Arial,Helvetica,sans-serif;
-}
+    body{
+      background:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.78)),
+        url("background.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color:#fff;
+      position:relative;
+      overflow:hidden;
+    }
 
-body{
-background:
-linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.8)),
-url("background.png");
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-color:#fff;
-text-align:center;
-}
+    .page{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px 20px 90px;
+    }
 
-/* HEADER */
+    .artist-wrap{
+      width:100%;
+      max-width:1100px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:70px;
+      animation: fadeUp 1.2s ease forwards;
+      opacity:0;
+      transform:translateY(20px);
+    }
 
-.header{
-padding-top:40px;
-animation:fadeIn 1s ease forwards;
-opacity:0;
-}
+    .artist-image{
+      flex:0 0 420px;
+      text-align:center;
+    }
 
-.header h1{
-margin:0;
-font-size:64px;
-letter-spacing:10px;
-}
+    .artist-image img{
+      width:100%;
+      max-width:420px;
+      height:auto;
+      display:block;
+      margin:0 auto;
+      box-shadow:0 0 35px rgba(0,0,0,.35);
+    }
 
-/* ARTIST LOGO */
+    .artist-info{
+      flex:1;
+      max-width:520px;
+    }
 
-.artist-logo{
-margin-top:80px;
-animation:fadeIn 1.5s ease forwards;
-opacity:0;
-}
+    .artist-info h1{
+      margin:0 0 24px;
+      font-size:64px;
+      letter-spacing:8px;
+      line-height:1;
+    }
 
-.artist-logo img{
-height:260px;
-width:auto;
-}
+    .artist-info p{
+      margin:0 0 18px;
+      font-size:17px;
+      line-height:1.8;
+      color:rgba(255,255,255,.9);
+    }
 
-/* BIO */
+    .social-links{
+      margin-top:28px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
 
-.bio{
-margin-top:40px;
-max-width:700px;
-margin-left:auto;
-margin-right:auto;
-font-size:16px;
-line-height:1.6;
-opacity:.85;
-padding:0 20px;
-}
+    .social-links a{
+      display:inline-block;
+      padding:12px 18px;
+      background:rgba(255,255,255,.1);
+      color:#fff;
+      text-decoration:none;
+      font-size:12px;
+      letter-spacing:2px;
+      font-weight:700;
+      transition:.25s ease;
+    }
 
-/* SOCIAL LINKS */
+    .social-links a:hover{
+      background:#fff;
+      color:#000;
+    }
 
-.links{
-margin-top:40px;
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-}
+    .back-fixed{
+      position:fixed;
+      left:50%;
+      bottom:30px;
+      transform:translateX(-50%);
+      z-index:10;
+    }
 
-.link-btn{
-padding:12px 22px;
-background:rgba(255,255,255,.1);
-text-decoration:none;
-color:#fff;
-font-size:12px;
-letter-spacing:2px;
-transition:.25s;
-}
+    .btn-link{
+      display:inline-block;
+      padding:14px 28px;
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      text-decoration:none;
+      letter-spacing:4px;
+      font-size:12px;
+      font-weight:700;
+      transition:.25s;
+    }
 
-.link-btn:hover{
-background:#fff;
-color:#000;
-}
+    .btn-link:hover{
+      background:#fff;
+      color:#000;
+    }
 
-/* BACK BUTTON */
+    .footer-left{
+      position:fixed;
+      left:18px;
+      bottom:14px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:11px;
+      letter-spacing:1px;
+      opacity:.65;
+      z-index:999;
+    }
 
-.back{
-margin-top:60px;
-}
+    .footer-left img{
+      width:64px;
+      height:auto;
+      opacity:1;
+    }
 
-.back a{
-padding:14px 28px;
-background:rgba(255,255,255,.12);
-color:#fff;
-text-decoration:none;
-letter-spacing:4px;
-font-size:12px;
-transition:.25s;
-}
+    .whatsapp-float{
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      background:rgba(0,0,0,.6);
+      backdrop-filter: blur(6px);
+      padding:12px 18px;
+      border-radius:40px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      box-shadow:0 0 20px rgba(0,0,0,.6);
+      z-index:1000;
+      transition:.25s ease;
+    }
 
-.back a:hover{
-background:#fff;
-color:#000;
-}
+    .whatsapp-float img{
+      width:22px;
+      height:auto;
+    }
 
-/* FOOTER */
+    .whatsapp-float span{
+      color:#fff;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:1px;
+      line-height:1.2;
+      white-space:nowrap;
+    }
 
-.footer{
-position:fixed;
-left:18px;
-bottom:14px;
-display:flex;
-align-items:center;
-gap:8px;
-font-size:11px;
-opacity:.65;
-}
+    .whatsapp-float:hover{
+      transform:scale(1.08);
+      box-shadow:0 0 28px rgba(37,211,102,.6);
+    }
 
-.footer img{
-width:64px;
-}
+    @keyframes fadeUp{
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
 
-/* WHATSAPP */
+    @media (max-width: 980px){
+      .artist-wrap{
+        flex-direction:column;
+        text-align:center;
+        gap:30px;
+        max-width:720px;
+      }
 
-.whatsapp{
-position:fixed;
-right:22px;
-bottom:22px;
-background:rgba(0,0,0,.6);
-padding:12px 18px;
-border-radius:40px;
-display:flex;
-align-items:center;
-gap:10px;
-text-decoration:none;
-}
+      .artist-image{
+        flex:unset;
+      }
 
-.whatsapp img{
-width:22px;
-}
+      .artist-info h1{
+        font-size:46px;
+        letter-spacing:6px;
+      }
 
-.whatsapp span{
-color:#fff;
-font-size:11px;
-letter-spacing:1px;
-}
+      .social-links{
+        justify-content:center;
+      }
+    }
 
-/* ANIMATION */
+    @media (max-width: 600px){
+      .artist-info h1{
+        font-size:34px;
+        letter-spacing:4px;
+      }
 
-@keyframes fadeIn{
-to{opacity:1;}
-}
+      .artist-info p{
+        font-size:15px;
+        line-height:1.7;
+      }
 
-/* MOBILE */
+      .artist-image img{
+        max-width:280px;
+      }
 
-@media(max-width:600px){
-
-.header h1{
-font-size:38px;
-letter-spacing:6px;
-}
-
-.artist-logo img{
-height:160px;
-}
-
-.whatsapp span{
-display:none;
-}
-
-}
-
-</style>
+      .whatsapp-float span{
+        display:none;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="header">
-<h1>BODHI ADITYO</h1>
-</div>
+  <div class="page">
+    <div class="artist-wrap">
 
-<div class="artist-logo">
-<img src="bodhi-adityo-logo.png" alt="Bodhi Adityo">
-</div>
+      <div class="artist-image">
+        <img src="bodhi-adityo-photo.jpg" alt="BODHI ADITYO artist photo" />
+      </div>
 
-<div class="bio">
-Bodhi Adityo is an electronic music artist exploring deep melodic techno and atmospheric soundscapes.
-His music blends emotional melodies with driving rhythms, creating immersive journeys designed for the dance floor and beyond.
-</div>
+      <div class="artist-info">
+        <h1>BODHI ADITYO</h1>
 
-<div class="links">
+        <p>
+          BODHI ADITYO is an electronic music artist focused on deep melodic techno,
+          atmospheric textures and hypnotic grooves crafted for immersive listening experiences.
+        </p>
 
-<a class="link-btn" href="#" target="_blank">BEATPORT</a>
+        <p>
+          His sound combines emotion, movement and modern production, blending melodic elements
+          with a dark and driving energy that fits both the dancefloor and late-night journeys.
+        </p>
 
-<a class="link-btn" href="#" target="_blank">SPOTIFY</a>
+        <p>
+          As part of the LumaTech Music roster, BODHI ADITYO is building a distinctive artistic
+          identity through refined sound design, strong atmosphere and carefully curated releases.
+        </p>
 
-<a class="link-btn" href="#" target="_blank">INSTAGRAM</a>
+        <div class="social-links">
+          <a href="#" target="_blank">INSTAGRAM</a>
+          <a href="#" target="_blank">SOUNDCLOUD</a>
+          <a href="#" target="_blank">FACEBOOK</a>
+        </div>
+      </div>
 
-<a class="link-btn" href="#" target="_blank">YOUTUBE</a>
+    </div>
+  </div>
 
-</div>
+  <div class="back-fixed">
+    <a class="btn-link" href="artists.html">BACK</a>
+  </div>
 
-<div class="back">
-<a href="artists.html">BACK</a>
-</div>
+  <div class="footer-left">
+    <img src="logo white.png" alt="Lumatech Logo">
+    <span>All Rights Reserved. Lumatech Music © 2026</span>
+  </div>
 
-<div class="footer">
-<img src="logo white.png">
-<span>All Rights Reserved. LumaTech Music © 2026</span>
-</div>
-
-<a href="https://chat.whatsapp.com/Hw4geis1c3pENPVwpwmjKh"
-target="_blank"
-class="whatsapp">
-
-<img src="whatsapp.png">
-
-<span>Join the Official LumaTech WhatsApp Updates Group</span>
-
-</a>
+  <a href="https://chat.whatsapp.com/Hw4geis1c3pENPVwpwmjKh"
+     target="_blank"
+     class="whatsapp-float"
+     title="Join the Official LUMATECH WhatsApp Updates Group">
+     <img src="whatsapp.png" alt="WhatsApp">
+     <span>Join the Official LumaTech WhatsApp Updates Group</span>
+  </a>
 
 </body>
 </html>
