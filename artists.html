@@ -1,201 +1,258 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LumaTech – Artists</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LumaTech – Artists</title>
 
-  <style>
-    *{ box-sizing:border-box; }
+<style>
 
-    html, body{
-      margin:0;
-      height:100%;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+*{box-sizing:border-box;}
 
-    body{
-      background:
-        linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7)),
-        url("background.png");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color:#fff;
-      position: relative;
-      overflow:hidden;
-    }
+html,body{
+margin:0;
+height:100%;
+font-family:Arial,Helvetica,sans-serif;
+}
 
-    /* כותרת למעלה */
-    .header{
-      width:100%;
-      text-align:center;
-      padding-top:40px;
-      animation: fadeIn 1.2s ease-out forwards;
-      opacity:0;
-      transform: translateY(-10px);
-    }
-    .header h1{
-      margin:0;
-      font-size:64px;
-      letter-spacing:10px;
-    }
+body{
+background:
+linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7)),
+url("background.png");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+color:#fff;
+position:relative;
+overflow:hidden;
+}
 
-    /* לוגו במרכז העמוד */
-    .logo-center{
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform: translate(-50%, -50%);
-      opacity:0;
-      animation: logoFade 1.6s ease forwards;
-    }
-    .logo-center img{
-      height:320px;
-      width:auto;
-      transition: transform 0.35s ease;
-      cursor:pointer;
-      display:block;
-    }
-    .logo-center img:hover{
-      transform: scale(1.15);
-    }
+/* HEADER */
 
-    /* BACK */
-    .back-fixed{
-      position:fixed;
-      left:50%;
-      bottom:30px;
-      transform:translateX(-50%);
-      z-index: 10;
-    }
-    .btn-link{
-      display:inline-block;
-      padding:14px 28px;
-      background:rgba(255,255,255,.12);
-      color:#fff;
-      text-decoration:none;
-      letter-spacing:4px;
-      font-size:12px;
-      font-weight:700;
-      transition:.25s;
-    }
-    .btn-link:hover{
-      background:#fff;
-      color:#000;
-    }
+.header{
+width:100%;
+text-align:center;
+padding-top:40px;
+animation:fadeIn 1.2s ease-out forwards;
+opacity:0;
+transform:translateY(-10px);
+}
 
-    /* ===== WHATSAPP FLOAT BUTTON ===== */
-    .whatsapp-float{
-      position:fixed;
-      right:22px;
-      bottom:22px;
-      background:rgba(0,0,0,.6);
-      backdrop-filter: blur(6px);
-      padding:12px 18px;
-      border-radius:40px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      text-decoration:none;
-      box-shadow:0 0 20px rgba(0,0,0,.6);
-      z-index:1000;
-      transition:.25s ease;
-    }
+.header h1{
+margin:0;
+font-size:64px;
+letter-spacing:10px;
+}
 
-    .whatsapp-float img{
-      width:22px;
-      height:auto;
-    }
+/* ===== ARTISTS GRID ===== */
 
-    .whatsapp-float span{
-      color:#fff;
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:1px;
-      line-height:1.2;
-      white-space:nowrap;
-    }
+.artists-grid{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+display:flex;
+align-items:center;
+justify-content:center;
+gap:140px;
+opacity:0;
+animation:logoFade 1.6s ease forwards;
+}
 
-    .whatsapp-float:hover{
-      transform:scale(1.08);
-      box-shadow:0 0 28px rgba(37,211,102,.6);
-    }
+.artist img{
+height:260px;
+width:auto;
+cursor:pointer;
+transition:.35s ease;
+}
 
-    @keyframes fadeIn{
-      to{ opacity:1; transform: translateY(0); }
-    }
-    @keyframes logoFade{
-      from{ opacity:0; transform: translate(-50%, -40%); }
-      to{ opacity:1; transform: translate(-50%, -50%); }
-    }
+.artist img:hover{
+transform:scale(1.15);
+}
 
-    @media (max-width: 900px){
-      .logo-center img{ height:220px; }
-      .header h1{ font-size:48px; letter-spacing:6px; }
-    }
-    @media (max-width: 600px){
-      .logo-center img{ height:180px; }
-      .whatsapp-float span{ display:none; }
-    }
+/* BACK BUTTON */
 
-    /* ===== FOOTER LEFT ===== */
+.back-fixed{
+position:fixed;
+left:50%;
+bottom:30px;
+transform:translateX(-50%);
+z-index:10;
+}
+
+.btn-link{
+display:inline-block;
+padding:14px 28px;
+background:rgba(255,255,255,.12);
+color:#fff;
+text-decoration:none;
+letter-spacing:4px;
+font-size:12px;
+font-weight:700;
+transition:.25s;
+}
+
+.btn-link:hover{
+background:#fff;
+color:#000;
+}
+
+/* WHATSAPP BUTTON */
+
+.whatsapp-float{
+position:fixed;
+right:22px;
+bottom:22px;
+background:rgba(0,0,0,.6);
+backdrop-filter:blur(6px);
+padding:12px 18px;
+border-radius:40px;
+display:flex;
+align-items:center;
+gap:10px;
+text-decoration:none;
+box-shadow:0 0 20px rgba(0,0,0,.6);
+z-index:1000;
+transition:.25s ease;
+}
+
+.whatsapp-float img{
+width:22px;
+height:auto;
+}
+
+.whatsapp-float span{
+color:#fff;
+font-size:11px;
+font-weight:700;
+letter-spacing:1px;
+white-space:nowrap;
+}
+
+.whatsapp-float:hover{
+transform:scale(1.08);
+box-shadow:0 0 28px rgba(37,211,102,.6);
+}
+
+/* FOOTER */
+
 .footer-left{
-  position:fixed;
-  left:18px;
-  bottom:14px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-size:11px;
-  letter-spacing:1px;
-  opacity:.65;
-  z-index:999;
-}
-.footer-left img{
-  width:64px;
-  height:auto;
-  opacity:1;
+position:fixed;
+left:18px;
+bottom:14px;
+display:flex;
+align-items:center;
+gap:8px;
+font-size:11px;
+letter-spacing:1px;
+opacity:.65;
+z-index:999;
 }
 
-/* ===== MOBILE ===== */
-@media(max-width:600px){
-  h1{ font-size:34px; letter-spacing:6px; }
-  .whatsapp-float span{ display:none; }
+.footer-left img{
+width:64px;
+height:auto;
 }
-  </style>
+
+/* ANIMATIONS */
+
+@keyframes fadeIn{
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes logoFade{
+from{opacity:0;transform:translate(-50%,-40%);}
+to{opacity:1;transform:translate(-50%,-50%);}
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.header h1{
+font-size:48px;
+letter-spacing:6px;
+}
+
+.artists-grid{
+gap:60px;
+}
+
+.artist img{
+height:180px;
+}
+
+}
+
+@media(max-width:600px){
+
+.header h1{
+font-size:34px;
+letter-spacing:6px;
+}
+
+.artists-grid{
+flex-direction:column;
+gap:40px;
+}
+
+.artist img{
+height:150px;
+}
+
+.whatsapp-float span{
+display:none;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <div class="header">
-    <h1>ARTISTS</h1>
-  </div>
-
-  <div class="logo-center">
-    <a href="don-juan.html">
-      <img src="don%20juan%20logo.png" alt="DON JUAN LOGO" />
-    </a>
-  </div>
-
-  <div class="back-fixed">
-    <a class="btn-link" href="home.html">BACK</a>
-  </div>
-
-<!-- FOOTER LEFT -->
-<div class="footer-left">
-  <img src="logo white.png" alt="Lumatech Logo">
-  <span>All Rights Reserved. Lumatech Music © 2026</span>
+<div class="header">
+<h1>ARTISTS</h1>
 </div>
 
-  <!-- FLOATING WHATSAPP -->
-  <a href="https://chat.whatsapp.com/Hw4geis1c3pENPVwpwmjKh"
-     target="_blank"
-     class="whatsapp-float"
-     title="Join the Official LUMATECH WhatsApp Updates Group">
-     <img src="whatsapp.png" alt="WhatsApp">
-     <span>Join the Official LumaTech WhatsApp Updates Group</span>
-  </a>
+<!-- ARTISTS -->
+
+<div class="artists-grid">
+
+<a class="artist" href="don-juan.html">
+<img src="don%20juan%20logo.png" alt="DON JUAN">
+</a>
+
+<a class="artist" href="bodhi-adityo.html">
+<img src="bodhi%20adityo%20logo.png" alt="BODHI ADITYO">
+</a>
+
+</div>
+
+<!-- BACK -->
+
+<div class="back-fixed">
+<a class="btn-link" href="home.html">BACK</a>
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer-left">
+<img src="logo white.png" alt="Lumatech Logo">
+<span>All Rights Reserved. Lumatech Music © 2026</span>
+</div>
+
+<!-- WHATSAPP -->
+
+<a href="https://chat.whatsapp.com/Hw4geis1c3pENPVwpwmjKh"
+target="_blank"
+class="whatsapp-float">
+
+<img src="whatsapp.png" alt="WhatsApp">
+
+<span>Join the Official LumaTech WhatsApp Updates Group</span>
+
+</a>
 
 </body>
 </html>
