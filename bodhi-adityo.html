@@ -40,39 +40,38 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:80px;
+      gap:70px;
       animation: fadeUp 1.2s ease forwards;
       opacity:0;
       transform:translateY(20px);
     }
 
     .artist-image{
-      flex:0 0 380px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
+      flex:0 0 390px;
+      text-align:center;
     }
 
     .artist-image img{
-      width:340px;
-      height:340px;
+      width:320px;
+      height:320px;
       object-fit:cover;
       border-radius:50%;
       display:block;
+      margin:0 auto;
       box-shadow:0 0 35px rgba(0,0,0,.35);
-      border:2px solid rgba(255,255,255,.08);
     }
 
     .artist-info{
       flex:1;
-      max-width:520px;
+      max-width:540px;
     }
 
     .artist-info h1{
       margin:0 0 24px;
-      font-size:64px;
-      letter-spacing:8px;
+      font-size:58px;
+      letter-spacing:6px;
       line-height:1;
+      white-space:nowrap;
     }
 
     .artist-info p{
@@ -83,7 +82,7 @@
     }
 
     .social-links{
-      margin-top:30px;
+      margin-top:26px;
       display:flex;
       flex-wrap:wrap;
       gap:14px;
@@ -155,7 +154,7 @@
       right:22px;
       bottom:22px;
       background:rgba(0,0,0,.6);
-      backdrop-filter:blur(6px);
+      backdrop-filter: blur(6px);
       padding:12px 18px;
       border-radius:40px;
       display:flex;
@@ -198,10 +197,6 @@
         overflow:auto;
       }
 
-      .page{
-        padding:50px 20px 120px;
-      }
-
       .artist-wrap{
         flex-direction:column;
         text-align:center;
@@ -214,13 +209,14 @@
       }
 
       .artist-image img{
-        width:280px;
-        height:280px;
+        width:260px;
+        height:260px;
       }
 
       .artist-info h1{
-        font-size:46px;
-        letter-spacing:6px;
+        font-size:42px;
+        letter-spacing:4px;
+        white-space:nowrap;
       }
 
       .social-links{
@@ -230,8 +226,8 @@
 
     @media (max-width: 600px){
       .artist-info h1{
-        font-size:34px;
-        letter-spacing:4px;
+        font-size:30px;
+        letter-spacing:2px;
       }
 
       .artist-info p{
@@ -242,16 +238,6 @@
       .artist-image img{
         width:220px;
         height:220px;
-      }
-
-      .footer-left{
-        left:12px;
-        bottom:10px;
-        font-size:10px;
-      }
-
-      .footer-left img{
-        width:52px;
       }
 
       .whatsapp-float span{
@@ -274,18 +260,23 @@
         <h1>BODHI ADITYO</h1>
 
         <p>
-          BODHI ADITYO is an electronic music artist focused on deep melodic techno,
-          atmospheric textures and hypnotic grooves crafted for immersive listening experiences.
+          BODHI ADITYO is a melodic techno artist creating deep, emotional and atmospheric music
+          designed for modern electronic music audiences.
         </p>
 
         <p>
-          His sound combines emotion, movement and modern production, blending melodic elements
-          with a dark and driving energy that fits both the dancefloor and late-night journeys.
+          His sound blends hypnotic grooves, refined textures and powerful melodic elements,
+          delivering productions that connect energy with feeling and atmosphere.
         </p>
 
         <p>
-          As part of the LumaTech Music roster, BODHI ADITYO is building a distinctive artistic
-          identity through refined sound design, strong atmosphere and carefully curated releases.
+          With a strong focus on mood, movement and musical storytelling, BODHI ADITYO’s tracks
+          are crafted to resonate both on the dancefloor and beyond.
+        </p>
+
+        <p>
+          As part of the LumaTech Music roster, BODHI ADITYO is building a clear and distinctive
+          artistic identity through carefully curated releases.
         </p>
 
         <div class="social-links">
@@ -311,8 +302,8 @@
      target="_blank"
      class="whatsapp-float"
      title="Join the Official LUMATECH WhatsApp Updates Group">
-    <img src="whatsapp.png" alt="WhatsApp">
-    <span>Join the Official LumaTech WhatsApp Updates Group</span>
+     <img src="whatsapp.png" alt="WhatsApp">
+     <span>Join the Official LumaTech WhatsApp Updates Group</span>
   </a>
 
 </body>
